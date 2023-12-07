@@ -1,6 +1,8 @@
 let gameBoard = document.querySelectorAll(".cell");
 
-let gameState= [null, null, null, null, null, null, null, null, null];
+let gameState = [null, null, null, null, null, null, null, null, null];
+
+let currentPlayer = "X";
 
 let winningCombinations = [
     [0, 1, 2],  // Top row
@@ -16,10 +18,15 @@ let winningCombinations = [
 gameBoard.forEach((cell, index) => {
     cell.addEventListener("click", function() {
         if (gameState[index] == null) {
-            gameState[index] = "X";
-            cell.innerText = "X";
+            gameState[index] = currentPlayer
+            cell.innerText = currentPlayer;
+            switchPlayer();
             if (checkWinner()) {
                 alert("You won!");
+                restart();
+            }
+            else {
+                switchPlayer();
             }
         }
     });
@@ -33,4 +40,15 @@ function checkWinner(){
         }
     }
     return false;
+}
+
+function restart() {
+    gameState= [null, null, null, null, null, null, null, null, null];
+    gameBoard.forEach((cell) => {
+        cell.innerText = "";
+    });
+}
+
+function switchPlayer() {
+    currentPlayer = currentPlayer === "X" ? "O" : "X";
 }
