@@ -1,40 +1,36 @@
 let gameBoard = document.querySelectorAll(".cell");
 
-let array = [
-    [0, 0, 0],
-    [0, 0, 0],
-    [0, 0, 0]
+let gameState= [null, null, null, null, null, null, null, null, null];
+
+let winningCombinations = [
+    [0, 1, 2],  // Top row
+    [3, 4, 5],  // Middle row
+    [6, 7, 8],  // Bottom row
+    [0, 3, 6],  // Left column
+    [1, 4, 7],  // Middle column
+    [2, 5, 8],  // Right column
+    [0, 4, 8],  // Diagonal top-left to bottom-right
+    [2, 4, 6]   // Diagonal top-right to bottom-left
 ];
 
-console.log('hi');
-
-gameBoard.forEach(cell => {
-    cell.addEventListener("click", function(){
-        const row = this.getAttribute("data-row");
-        const col = this.getAttribute("data-col");
-        cell.innerText = "X";
-        array[row][col] = "x";
-        console.log(array);
+gameBoard.forEach((cell, index) => {
+    cell.addEventListener("click", function() {
+        if (gameState[index] == null) {
+            gameState[index] = "X";
+            cell.innerText = "X";
+            if (checkWinner()) {
+                alert("You won!");
+            }
+        }
     });
-})
+});
 
-function winner() {
-    for (let row = 0; row < 3; row++) {
-        if (array[row][0] === "x" && array[row][1] === "x" && array[row][2] === "x") {
+
+function checkWinner(){
+    for (let combo of winningCombinations) {
+        if (combo.every(index => gameState[index] === "X" )){
             return true;
         }
-    }
-    for (let col = 0; col < 3; col++) {
-        if (array[0][col] === "x" && array[1][col] === "x" && array[2][col] === "x") {
-            return true;
-        }
-    }
-    if  (winner() === true) {
-        console.log("winner");
-    }
-    else {
-        console.log("no winner");
     }
     return false;
-    
 }
