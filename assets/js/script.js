@@ -25,13 +25,10 @@ gameBoard.forEach((cell, index) => {
                 alert("You won!");
                 restart();
             }
-            else {
-                switchPlayer();
-            }
         }
+        
     });
 });
-
 
 function checkWinner(){
     for (let combo of winningCombinations) {
@@ -39,7 +36,12 @@ function checkWinner(){
             return true;
         }
     }
-    return false;
+    for (let combo of winningCombinations) {
+        if (combo.every(index => gameState[index] === "O" )){
+            return true;
+        }
+       
+    }
 }
 
 function restart() {
