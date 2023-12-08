@@ -1,117 +1,92 @@
 let gameBoard = document.querySelectorAll(".cell");
-
+let turnLetter = document.querySelector("#turnContainer");
+let resetButton = document.querySelector("#reset");
+let turn = document.querySelector("#turn");
 let gameState = [null, null, null, null, null, null, null, null, null];
-
 let currentPlayer = "X";
-
-
 let winningCombinations = [
-    [0, 1, 2],  // Top row
-    [3, 4, 5],  // Middle row
-    [6, 7, 8],  // Bottom row
-    [0, 3, 6],  // Left column
-    [1, 4, 7],  // Middle column
-    [2, 5, 8],  // Right column
-    [0, 4, 8],  // Diagonal top-left to bottom-right
-    [2, 4, 6]   // Diagonal top-right to bottom-left
+    [0, 1, 2], // Top row
+    [3, 4, 5], // Middle row
+    [6, 7, 8], // Bottom row
+    [0, 3, 6], // Left column
+    [1, 4, 7], // Middle column
+    [2, 5, 8], // Right column
+    [0, 4, 8], // Diagonal top-left to bottom-right
+    [2, 4, 6], // Diagonal top-right to bottom-left
 ];
 
-whosTurn()
-startGame()
 
+startGame();
+whosTurn();
+restart()
 
 function startGame() {
     let startButton = document.querySelector("#start");
-    startButton.addEventListener("click", function() {
+    startButton.addEventListener("click", function () {
         startButton.style.display = "none";
-        document.querySelector("#reset").style.display = "flex";
-        document.querySelector("#turnContainer").style.visibility = "visible";
-        document.querySelector("#turnContainer").style.opacity= "1";
+        resetButton.style.display = "flex";
+        turnLetter.style.opacity = "1";
         game();
     });
-   
-    
 }
 
 function game() {
     gameBoard.forEach((cell, index) => {
         cell.addEventListener("click", function () {
-            document.querySelector("#turnContainer").style.opacity = "100%";
+            turnLetter.style.opacity = "100%";
             if (gameState[index] == null) {
-                gameState[index] = currentPlayer
+                gameState[index] = currentPlayer;
                 cell.innerText = currentPlayer;
                 switchPlayer();
-                if (checkWinner()) {
-                    alert("You won!");
-                    restart();
+                let winner = checkWinner();
+                if (winner) {
+                    jiggle(winner);
                 }
             }
-        
         });
     });
 }
 
-function checkWinner(){
+function checkWinner() {
     for (let combo of winningCombinations) {
-        if (combo.every(index => gameState[index] === "X")) {
-            return true;
+        if (combo.every((index) => gameState[index] === "X")) {
+            return combo;
         }
     }
-    for (let combo of winningCombinations) {
-        if (combo.every(index => gameState[index] === "O" )){
-            return true;
+        else if (combo.every((index) => gameState[index] === "O")) {
+            return combo;
         }
-       
     }
-    
-}
+
 
 function restart() {
-    gameState= [null, null, null, null, null, null, null, null, null];
-    gameBoard.forEach((cell) => {
-        cell.innerText = "";
-        document.querySelector("#turnContainer").style.opacity = "60%";
-
+    resetButton.addEventListener("click", function () {
+        gameState = [null, null, null, null, null, null, null, null, null];
+        gameBoard.forEach((cell) => {
+            cell.innerText = "";
+            turnLetter.style.opacity = "60%";
+            cell.classList.remove("jiggle");
+        });
     });
 }
 
 function switchPlayer() {
     currentPlayer = currentPlayer === "X" ? "O" : "X";
-    whosTurn()
-    
+    whosTurn();
 }
 
-
-
-let reset = document.querySelector("#reset").addEventListener("click", function () {
-    restart();
-    console.log("reset");
-});
-
-
-function whosTurn(){
-    let turn = document.querySelector("#turn");
+function whosTurn() {
     if (currentPlayer === "X") {
         turn.innerText = "X";
-    } else if (currentPlayer === "O"){
+    } else if (currentPlayer === "O") {
         turn.innerText = "O";
-        console.log("O")
-    }
-    else {
+    } else {
         turn.innerText = "X";
     }
-
 }
 
-function updateCellonHover() {
-    gameBoard.forEach((cell, index) => {
-        cell.addEventListener("mouseover", function () {
-            if (gameState[index] == null) {
-                cell.innerText = currentPlayer;
-            }
-        });
+function jiggle(winningCombo) {
+    winningCombo.forEach((index) => {
+        gameBoard[index].classList.add("jiggle");
     });
-    
 }
-
-function jiggle

@@ -144,7 +144,7 @@ body{
     cursor: pointer;
     width: auto; 
     margin: 20px auto;
- 
+
 }
 
 .cell{
@@ -170,7 +170,8 @@ body{
 
 #start:hover{
     animation: jiggle 0.5s ease-in 1;
+}
 
 .jiggle {
-        animation: jiggle 0.2s ease-in-out 0s infinite;
+    animation: jiggle .5s ease-in-out 0s 1;
     }
