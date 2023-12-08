@@ -32,7 +32,7 @@ gameBoard.forEach((cell, index) => {
 
 function checkWinner(){
     for (let combo of winningCombinations) {
-        if (combo.every(index => gameState[index] === "X" )){
+        if (combo.every(index => gameState[index] === "X")) {
             return true;
         }
     }
@@ -42,6 +42,7 @@ function checkWinner(){
         }
        
     }
+    
 }
 
 function restart() {
@@ -53,4 +54,19 @@ function restart() {
 
 function switchPlayer() {
     currentPlayer = currentPlayer === "X" ? "O" : "X";
+    let turn = document.querySelector("#turn");
+    if (currentPlayer === "X") {
+        turn.innerText = "X";
+    } else {
+        turn.innerText = "O";
+    }
 }
+
+
+
+let reset = document.querySelector("#reset").addEventListener("click", function () {
+    restart();
+    console.log("reset");
+});
+
+
