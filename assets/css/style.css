@@ -85,6 +85,7 @@ body{
 
 #O, #X{
     margin: 55px;
+
 }
 
 #X{
@@ -127,3 +128,49 @@ body{
 }
     
     
+#turnContainer{
+    opacity: 60%;
+    font-size: 70px;
+}
+
+#start{
+    margin: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    border: 1px solid white;
+    font-size: 20px;
+    cursor: pointer;
+    width: auto; 
+    margin: 20px auto;
+ 
+}
+
+.cell{
+    cursor: pointer;
+    font-size: 50px;
+ 
+}
+
+.cell:hover{
+    background-color: rgb(43, 43, 43);
+}
+/*Taken from https://codepen.io/andrewscofield/pen/ByxZQq */
+@keyframes jiggle {
+    20% {
+       transform: translateY(-13%); }
+    40% {
+       transform: translateY(13%); }
+    60% {
+       transform: translateY(-7%); }
+    80% {
+       transform: translateY(7%); }
+ }
+
+#start:hover{
+    animation: jiggle 0.5s ease-in 1;
+
+.jiggle {
+        animation: jiggle 0.2s ease-in-out 0s infinite;
+    }
