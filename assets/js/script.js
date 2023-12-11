@@ -4,6 +4,8 @@ let resetButton = document.querySelector("#reset");
 let turn = document.querySelector("#turn");
 let gameState = [null, null, null, null, null, null, null, null, null];
 let currentPlayer = "X";
+let computerPlayer = "O";
+let player = currentPlayer;
 let winningCombinations = [
     [0, 1, 2], // Top row
     [3, 4, 5], // Middle row
@@ -35,9 +37,10 @@ function game() {
         cell.addEventListener("click", function () {
             turnLetter.style.opacity = "100%";
             if (gameState[index] == null) {
-                gameState[index] = currentPlayer;
-                cell.innerText = currentPlayer;
+                gameState[index] = player;
+                cell.innerText = player;
                 switchPlayer();
+                console.log(player);
                 let winner = checkWinner();
                 if (winner) {
                     jiggle(winner);
@@ -69,18 +72,32 @@ function restart() {
     });
 }
 
-function switchPlayer() {
+/*function switchPlayer() {
     currentPlayer = currentPlayer === "X" ? "O" : "X";
     whosTurn();
-}
+}*/
 
-function whosTurn() {
+function switchPlayer() {
+    player = (player === computerPlayer) ? currentPlayer : computerPlayer;
+    whosTurn();
+}
+/*function whosTurn() {
     if (currentPlayer === "X") {
         turn.innerText = "X";
     } else if (currentPlayer === "O") {
         turn.innerText = "O";
     } else {
         turn.innerText = "X";
+    }
+}
+*/
+function whosTurn() {
+    if (player == currentPlayer) {
+        turn.innerText = currentPlayer;
+    } else if (player == computerPlayer) {
+        turn.innerText = computerPlayer;
+    } else {
+        turn.innerText = currentPlayer;
     }
 }
 
