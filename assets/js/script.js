@@ -21,6 +21,7 @@ let winningCombinations = [
 startGame();
 restart()
 whosTurn()
+whatsavailable()
 
 function startGame() {
     let startButton = document.querySelector("#start");
@@ -37,18 +38,43 @@ function game() {
         cell.addEventListener("click", function () {
             turnLetter.style.opacity = "100%";
             if (gameState[index] == null) {
-                gameState[index] = player;
-                cell.innerText = player;
-                switchPlayer();
-                console.log(player);
+                gameState[index] = currentPlayer;
+                cell.innerText = currentPlayer;
                 let winner = checkWinner();
                 if (winner) {
                     jiggle(winner);
                 }
+                console.log(gameState);
+                switchPlayer();
+                computersTurn();
+
             }
+            
         });
+
     });
-}
+} 
+
+function computersTurn() {
+
+    let available = [];
+    for (let i = 0; i < gameState.length; i++) 
+            if (gameState[i] === null) {
+                available.push(i);
+            }
+        
+    let random = Math.floor(Math.random() * available.length);
+    let computerIndex = available[random];
+    
+    gameState[computerIndex] = computerPlayer;
+    gameBoard[computerIndex].innerText = computerPlayer;
+    
+    switchPlayer();
+    game();
+    }
+
+
+
 
 function checkWinner() {
     for (let combo of winningCombinations) {
@@ -106,3 +132,5 @@ function jiggle(winningCombo) {
         gameBoard[index].classList.add("jiggle");
     });
 }
+
+
