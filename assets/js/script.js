@@ -4,7 +4,6 @@ let resetButton = document.querySelector("#reset");
 let turn = document.querySelector("#turn");
 let gameState = [null, null, null, null, null, null, null, null, null];
 let currentPlayer = "X";
-let computerPlayer = "O";
 let winningCombinations = [
     [0, 1, 2], // Top row
     [3, 4, 5], // Middle row
@@ -18,8 +17,8 @@ let winningCombinations = [
 
 
 startGame();
-whosTurn();
 restart()
+whosTurn()
 
 function startGame() {
     let startButton = document.querySelector("#start");
@@ -39,7 +38,8 @@ function game() {
                 gameState[index] = currentPlayer;
                 cell.innerText = currentPlayer;
                 switchPlayer();
-                if (Checkwinner()) {
+                let winner = checkWinner();
+                if (winner) {
                     jiggle(winner);
                 }
             }
@@ -49,14 +49,14 @@ function game() {
 
 function checkWinner() {
     for (let combo of winningCombinations) {
-        if (combo.every((index) => gameState[index] ===  currentPlayer)) {
+        if (combo.every((index) => gameState[index] === "X")) {
             return combo;
-        } else if (combo.every((index) => gameState[index] === computerPlayer)) {
+        } else if (combo.every((index) => gameState[index] === "O")) {
             return combo;
         }
     }
-    return null;
 }
+
 
 function restart() {
     resetButton.addEventListener("click", function () {
@@ -70,17 +70,17 @@ function restart() {
 }
 
 function switchPlayer() {
-    currentPlayer = (currentPlayer === currentPlayer) ? computerPlayer : currentPlayer;
+    currentPlayer = currentPlayer === "X" ? "O" : "X";
     whosTurn();
 }
 
 function whosTurn() {
-    if (currentPlayer) {
-        turn.innerText = currentPlayer;
-    } else if (computerPlayer) {
-        turn.innerText = computerPlayer;
+    if (currentPlayer === "X") {
+        turn.innerText = "X";
+    } else if (currentPlayer === "O") {
+        turn.innerText = "O";
     } else {
-        turn.innerText = currentPlayer;
+        turn.innerText = "X";
     }
 }
 
