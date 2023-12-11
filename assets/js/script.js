@@ -4,6 +4,7 @@ let resetButton = document.querySelector("#reset");
 let turn = document.querySelector("#turn");
 let gameState = [null, null, null, null, null, null, null, null, null];
 let currentPlayer = "X";
+let computerPlayer = "O";
 let winningCombinations = [
     [0, 1, 2], // Top row
     [3, 4, 5], // Middle row
@@ -38,8 +39,7 @@ function game() {
                 gameState[index] = currentPlayer;
                 cell.innerText = currentPlayer;
                 switchPlayer();
-                let winner = checkWinner();
-                if (winner) {
+                if (Checkwinner()) {
                     jiggle(winner);
                 }
             }
@@ -49,15 +49,14 @@ function game() {
 
 function checkWinner() {
     for (let combo of winningCombinations) {
-        if (combo.every((index) => gameState[index] === "X")) {
+        if (combo.every((index) => gameState[index] ===  currentPlayer)) {
+            return combo;
+        } else if (combo.every((index) => gameState[index] === computerPlayer)) {
             return combo;
         }
     }
-        else if (combo.every((index) => gameState[index] === "O")) {
-            return combo;
-        }
-    }
-
+    return null;
+}
 
 function restart() {
     resetButton.addEventListener("click", function () {
@@ -71,17 +70,17 @@ function restart() {
 }
 
 function switchPlayer() {
-    currentPlayer = currentPlayer === "X" ? "O" : "X";
+    currentPlayer = (currentPlayer === currentPlayer) ? computerPlayer : currentPlayer;
     whosTurn();
 }
 
 function whosTurn() {
-    if (currentPlayer === "X") {
-        turn.innerText = "X";
-    } else if (currentPlayer === "O") {
-        turn.innerText = "O";
+    if (currentPlayer) {
+        turn.innerText = currentPlayer;
+    } else if (computerPlayer) {
+        turn.innerText = computerPlayer;
     } else {
-        turn.innerText = "X";
+        turn.innerText = currentPlayer;
     }
 }
 
@@ -90,3 +89,4 @@ function jiggle(winningCombo) {
         gameBoard[index].classList.add("jiggle");
     });
 }
+
