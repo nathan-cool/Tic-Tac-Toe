@@ -89,4 +89,3 @@ function jiggle(winningCombo) {
         gameBoard[index].classList.add("jiggle");
     });
 }
-
