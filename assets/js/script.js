@@ -2,6 +2,7 @@ let gameBoard = document.querySelectorAll(".cell");
 let turnLetter = document.querySelector("#turnContainer");
 let resetButton = document.querySelector("#reset");
 let turn = document.querySelector("#turn");
+let startButton = document.querySelector("#start");
 let gameState = [null, null, null, null, null, null, null, null, null];
 let currentPlayer = "X";
 let computerPlayer = "O";
@@ -21,34 +22,34 @@ let winningCombinations = [
 let gameStillActive = true;
 
 multiplayerOrSingle();
-startGame();
 restart();
 whosTurn();
-console.log(multiPlayerSelected);
+
 
 function multiplayerOrSingle() {
 let multiplayer = document.querySelector("#multiplayerbutton");
 if (multiplayer) {
 multiplayer.addEventListener("click", function () {
-multiPlayerSelected = true;
+    multiPlayerSelected = true;
+    singlePlayerSelected = false;
+    startGame()
 });
 }
 let singleplayer = document.querySelector("#singleplayerbutton");
 if (singleplayer) {
 singleplayer.addEventListener("click", function () {
-singlePlayerSelected = true;
+    singlePlayerSelected = true;
+    multiPlayerSelected = false;
+    startGame()
 });
 }
 }
 
 function startGame() {
-let startButton = document.querySelector("#start");
-startButton.addEventListener("click", function () {
 startButton.style.display = "none";
 resetButton.style.display = "flex";
 turnLetter.style.opacity = "1";
 game();
-});
 }
 
 function game() {
@@ -114,7 +115,8 @@ gameState = [null, null, null, null, null, null, null, null, null];
 gameBoard.forEach((cell) => {
 cell.innerText = "";
 turnLetter.style.opacity = "60%";
-cell.classList.remove("jiggle");
+    cell.classList.remove("jiggle");
+    currentPlayer = "X";
 });
 });
 }
