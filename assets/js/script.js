@@ -5,6 +5,7 @@ let turn = document.querySelector("#turn");
 let gameState = [null, null, null, null, null, null, null, null, null];
 let currentPlayer = "X";
 let computerPlayer = "O";
+
 let player = currentPlayer;
 let winningCombinations = [
     [0, 1, 2], // Top row
@@ -16,6 +17,7 @@ let winningCombinations = [
     [0, 4, 8], // Diagonal top-left to bottom-right
     [2, 4, 6], // Diagonal top-right to bottom-left
 ];
+let gameStillActive = true;
 
 
 startGame();
@@ -34,8 +36,10 @@ function startGame() {
 }
 
 function game() {
-    gameBoard.forEach((cell, index) => {
-        cell.addEventListener("click", function () {
+   gameBoard.forEach((cell, index) => {
+       cell.addEventListener("click", function (event) {
+           if (!gameStillActive)
+               return;
             turnLetter.style.opacity = "100%";
             if (gameState[index] == null) {
                 gameState[index] = currentPlayer;
@@ -43,10 +47,13 @@ function game() {
                 let winner = checkWinner();
                 if (winner) {
                     jiggle(winner);
+                    gameStillActive = false;
+                    event.preventDefault();
+                    return;
                 }
                 console.log(gameState);
                 switchPlayer();
-                computersTurn();
+                setTimeout(computersTurn, 300);
 
             }
             
@@ -56,19 +63,21 @@ function game() {
 } 
 
 function computersTurn() {
-
     let available = [];
     for (let i = 0; i < gameState.length; i++) 
             if (gameState[i] === null) {
                 available.push(i);
             }
-        
     let random = Math.floor(Math.random() * available.length);
     let computerIndex = available[random];
-    
     gameState[computerIndex] = computerPlayer;
     gameBoard[computerIndex].innerText = computerPlayer;
-    
+    let winner = checkWinner();
+    if (winner) {
+        jiggle(winner);
+        gameStillActive = false;
+        return;
+                }
     switchPlayer();
     game();
     }
@@ -82,13 +91,17 @@ function checkWinner() {
             return combo;
         } else if (combo.every((index) => gameState[index] === "O")) {
             return combo;
+        } 
+
         }
+    
     }
-}
+
 
 
 function restart() {
     resetButton.addEventListener("click", function () {
+        gameStillActive = true;
         gameState = [null, null, null, null, null, null, null, null, null];
         gameBoard.forEach((cell) => {
             cell.innerText = "";
