@@ -26,20 +26,26 @@ footer, header, hgroup, menu, nav, section {
 	display: block;
 }
 
-body {
-	line-height: 1;
-    background-color: red;
-    margin: 0;
-    padding: 0;
-    font-family: 'Roboto', sans-serif;
+html, body {
+  height: 100%; 
+  margin: 0; 
+  display: flex; 
+  justify-content: center;
+  align-items: center; 
+  background-color: #3b4660;
+  font-family: 'Roboto', sans-serif; 
 }
 
 /* Styling for the gameboard */
 #gameboard {
     display: grid;
-    grid-template-columns: repeat(3, auto);
+    grid-template-columns: repeat(3, 1fr);
+     grid-template-rows: repeat(3, 1fr);
     grid-gap: 0;
-    width: 300px;
+    width: 80vw; 
+    height: 80vw;
+    max-width: 750px; 
+    max-height: 750px; 
 }
 
 /* Styling for each cell in the game */
@@ -47,18 +53,17 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid white;
-    width: 100px;
-    height: 100px;
-    background: black;
-    color: white;
-    font-size: 50px;
+    border: 1px solid #2c3244;
+    border-bottom: 1px solid #2c3244;
+    background: #3b4660;
+    color: #ffffff;
+    font-size:4rem;
     cursor: pointer;
 }
 
 /* Hover effect for cells */
 .cell:hover {
-    background-color: rgb(43, 43, 43);
+    background-color:  #2c3244;
 }
 
 /* Styling for X and O */
@@ -94,7 +99,6 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
 }
 
 /* Reset button styling */
