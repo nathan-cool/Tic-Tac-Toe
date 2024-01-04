@@ -15,7 +15,7 @@ time, mark, audio, video {
 	margin: 0;
 	padding: 0;
 	border: 0;
-	font-size: 100%;
+	font-size: 14px;
 	font: inherit;
 	vertical-align: baseline;
 }
@@ -33,9 +33,14 @@ html, body {
   justify-content: center;
   align-items: center; 
   background-color: #3b4660;
-  font-family: 'Roboto', sans-serif; 
+  font-family: 'Quicksand', sans-serif;
 }
 
+h2{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+    margin-bottom: 10px;
+    padding: 20px
+}
 /* Styling for the gameboard */
 #gameboard {
     display: grid;
@@ -44,8 +49,9 @@ html, body {
     grid-gap: 0;
     width: 80vw; 
     height: 80vw;
-    max-width: 750px; 
-    max-height: 750px; 
+    max-width: 500px; 
+    max-height: 500px; 
+    border: 1px solid #2c3244;
 }
 
 /* Styling for each cell in the game */
@@ -53,12 +59,20 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid #2c3244;
+    border-right: 1px solid #2c3244;
     border-bottom: 1px solid #2c3244;
     background: #3b4660;
     color: #ffffff;
-    font-size:4rem;
     cursor: pointer;
+    font-size: 4rem;
+}
+
+.cell:nth-child(3n) {
+    border-right: none;
+}
+
+.cell:nth-last-child(-n+3) {
+    border-bottom: none;
 }
 
 /* Hover effect for cells */
@@ -68,7 +82,7 @@ html, body {
 
 /* Styling for X and O */
 #XO {
-    font-size: 60px;
+ 
     position: absolute;
 }
 
@@ -99,6 +113,9 @@ html, body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 10px;
+    padding: 10px;
+    display: none;
 }
 
 /* Reset button styling */
@@ -116,8 +133,9 @@ html, body {
 
 /* Styling for turn container */
 #turnContainer {
-    opacity: 60%;
-    font-size: 70px;
+    color: #ffffff;
+    font-size: 1.5rem;
+    
 }
 
 /* Start button styling */
