@@ -1,8 +1,4 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
-
+/* CSS Reset from Meyerweb (http://meyerweb.com/eric/tools/css/reset/) */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -23,155 +19,129 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+
 body {
 	line-height: 1;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
-
-
-
-body{
     background-color: red;
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
 }
 
+/* Styling for the gameboard */
 #gameboard {
     display: grid;
     grid-template-columns: repeat(3, auto);
     grid-gap: 0;
-    width: 300px
+    width: 300px;
 }
 
-.cell{
+/* Styling for each cell in the game */
+.cell {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid black;
+    border: 1px solid white;
     width: 100px;
     height: 100px;
     background: black;
     color: white;
     font-size: 50px;
-    border: 1px solid white
+    cursor: pointer;
 }
 
-#XO{
+/* Hover effect for cells */
+.cell:hover {
+    background-color: rgb(43, 43, 43);
+}
+
+/* Styling for X and O */
+#XO {
     font-size: 60px;
     position: absolute;
-
 }
 
-
-#O, #X{
+#O, #X {
     margin: 55px;
-
 }
 
-#X{
+#X {
     color: rgba(255, 0, 0, 0.419);
 }
 
-#O{
+#O {
     color: rgba(0, 0, 255, 0.419);
 }
 
-#O:hover{
+/* Hover effects for X and O */
+#O:hover {
     color: rgb(0, 0, 255);
 }
 
-#X:hover{
+#X:hover {
     color: rgb(255, 0, 0);
 }
 
-#game-container{
+/* Styling for the game container */
+#game-container {
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     justify-content: center;
-    align-items: center; 
+    align-items: center;
     height: 100vh;
-
 }
 
-#reset{
-    margin: 20px;
+/* Reset button styling */
+#reset {
+    margin: 20px auto;
     padding: 10px;
     border-radius: 10px;
-    background-color: rgb(0, 0, 0);
+    background-color: black;
     color: white;
     border: 1px solid white;
     font-size: 20px;
     cursor: pointer;
-    width: auto; 
-    margin: 20px auto;
     display: none;
 }
-    
-    
-#turnContainer{
+
+/* Styling for turn container */
+#turnContainer {
     opacity: 60%;
     font-size: 70px;
 }
 
-#start{
-    margin: 20px;
+/* Start button styling */
+#start {
+    margin: 20px auto;
     padding: 10px;
     border-radius: 10px;
-    background-color: rgb(0, 0, 0);
+    background-color: black;
     color: white;
     border: 1px solid white;
     font-size: 20px;
     cursor: pointer;
-    width: auto; 
-    margin: 20px auto;
- 
 }
 
-.cell{
-    cursor: pointer;
-    font-size: 50px;
- 
-}
-
-.cell:hover{
-    background-color: rgb(43, 43, 43);
-}
-/*Taken from https://codepen.io/andrewscofield/pen/ByxZQq */
-@keyframes jiggle {
-    20% {
-       transform: translateY(-13%); }
-    40% {
-       transform: translateY(13%); }
-    60% {
-       transform: translateY(-7%); }
-    80% {
-       transform: translateY(7%); }
- }
-
-#start:hover{
+/* Hover effect for start button */
+#start:hover {
     animation: jiggle 0.5s ease-in 1;
 }
 
+/* Keyframes for jiggle animation taken from codepen */
+@keyframes jiggle {
+    20% { transform: translateY(-13%); }
+    40% { transform: translateY(13%); }
+    60% { transform: translateY(-7%); }
+    80% { transform: translateY(7%); }
+}
+
+/* Applying jiggle animation */
 .jiggle {
-        animation: jiggle 0.5s ease-in-out;
-    }
+    animation: jiggle 0.5s ease-in-out;
+}

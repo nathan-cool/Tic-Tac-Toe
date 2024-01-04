@@ -1,42 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game</title>
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!--Open San, Nunito family -->
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200&family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
-</head>
-<body>
-   
-   
-    <div id= "game-container">
-        <div id="turnContainer"><span id="turn"></span></div>
-    <div id="gameboard">
-    <div class="cell" data-row="0" data-col="0"></div>
-    <div class="cell" data-row="0" data-col="1"></div>
-    <div class="cell" data-row="0" data-col="2"></div>
-    <div class="cell" data-row="1" data-col="0"></div>
-    <div class="cell" data-row="1" data-col="1"></div>
-    <div class="cell" data-row="1" data-col="2"></div>
-    <div class="cell" data-row="2" data-col="0"></div>
-    <div class="cell" data-row="2" data-col="1"></div>
-    <div class="cell" data-row="2" data-col="2"></div>
-    </div>
-   
-    <button id="reset">Reset</button>
-    <button id="start">Start</button>
-    <button id ="singleplayerbutton">SinglePlayer</button>
-    <button id ="multiplayerbutton">MultiPlayer</button>
-</div>
-
-
-
-   
-    <script src="assets/js/script.js"></script>
-</body>
+   <head>
+      <!-- Meta tags for character set and responsive design -->
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- Title of the page -->
+      <title>Game</title>
+      <!-- Link to the external stylesheet for custom styles -->
+      <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+      <!-- Preconnect for faster font loading from Google Fonts -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <!-- Google Fonts for Open Sans and Nunito Sans font families -->
+      <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200&family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
+   </head>
+   <body>
+      <!-- Main game container -->
+      <div id="game-container">
+         <!-- Container for displaying whose turn it is -->
+         <div id="turnContainer"><span id="turn"></span></div>
+         <!-- Game board with individual cells -->
+         <div id="gameboard">
+            <!-- Game cells with data attributes for row and column -->
+            <div class="cell" data-row="0" data-col="0"></div>
+            <div class="cell" data-row="0" data-col="1"></div>
+            <div class="cell" data-row="0" data-col="2"></div>
+            <div class="cell" data-row="1" data-col="0"></div>
+            <div class="cell" data-row="1" data-col="1"></div>
+            <div class="cell" data-row="1" data-col="2"></div>
+            <div class="cell" data-row="2" data-col="0"></div>
+            <div class="cell" data-row="2" data-col="1"></div>
+            <div class="cell" data-row="2" data-col="2"></div>
+         </div>
+         <!-- Control buttons for the game -->
+         <button id="reset">Reset</button>
+         <button id="start">Start</button>
+         <button id="singleplayerbutton">SinglePlayer</button>
+         <button id="multiplayerbutton">MultiPlayer</button>
+      </div>
+      <!-- Link to the external JavaScript file for game logic -->
+      <script src="assets/js/script.js"></script>
+   </body>
 </html>
