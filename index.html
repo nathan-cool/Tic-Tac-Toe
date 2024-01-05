@@ -1,30 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <!-- Meta tags for character set and responsive design -->
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <!-- Title of the page -->
-      <title>Game</title>
-      <!-- Link to the external stylesheet for custom styles -->
-      <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-      <!-- Preconnect for faster font loading from Google Fonts -->
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <!-- Google Fonts for Open Sans and Nunito Sans font families -->
-      <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200&family=Open+Sans:wght@300;400;700&display=swap" rel="stylesheet">
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
-   </head>
-   <body>
-      <!-- Main game container -->
-      <div id="game-container">
-         <!-- Container for displaying whose turn it is -->
-         <div id="turnContainer"><h2>Its <span id="turn"></span>'s turn</h2></div>
-         <div id="winningMessage"><h2><span id="winningMessageLetter"> </span> wins!</h2></div>
-         <!-- Game board with individual cells -->
-         <div id="gameboard">
+
+<head>
+    <!-- Meta tags for character set and responsive design -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tic-Tac-Toe game with single and multiplayer options">
+    <!-- Title of the page -->
+    <title>Tic-Tac-Toe Game</title>
+    <!-- Link to the external stylesheet for custom styles -->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <!-- Preconnect for faster font loading from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Google Fonts for Open Sans and Nunito Sans font families -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Main game container -->
+    <main id="game-container" aria-label="Game Container">
+        <!-- Container for displaying whose turn it is -->
+        <div id="turnContainer">
+            <h2>Its <span id="turn"></span>'s turn</h2>
+        </div>
+        <div id="winningMessage">
+            <h2><span id="winningMessageLetter"> </span> wins!</h2>
+        </div>
+        <!-- Game board with individual cells -->
+        <section id="gameboard" aria-label="Game Board">
             <!-- Game cells with data attributes for row and column -->
             <div class="cell" data-row="0" data-col="0"></div>
             <div class="cell" data-row="0" data-col="1"></div>
@@ -35,16 +40,17 @@
             <div class="cell" data-row="2" data-col="0"></div>
             <div class="cell" data-row="2" data-col="1"></div>
             <div class="cell" data-row="2" data-col="2"></div>
-         </div>
-         <button id="reset">Reset</button>
-        <button id="start">Start</button>
-      </div>
-      <!-- Control buttons for the game -->
-      <div id="gameControls">
-         <button id="singleplayerbutton">SinglePlayer</button>
-         <button id="multiplayerbutton">MultiPlayer</button>
-         </div>
-      <!-- Link to the external JavaScript file for game logic -->
-      <script src="assets/js/script.js"></script>
-   </body>
+        </section>
+        <button id="reset" type="button" class="button">Reset</button>
+        <button id="start" type="button" class="button">Start</button>
+    </main>
+    <!-- Control buttons for the game -->
+    <div id="gameControls">
+        <button id="singleplayerbutton" class="button" >Single Player</button>
+        <button id="multiplayerbutton" class="button">MultiPlayer</button>
+    </div>
+    <!-- Link to the external JavaScript file for game logic -->
+    <script src="assets/js/script.js"></script>
+</body>
+
 </html>

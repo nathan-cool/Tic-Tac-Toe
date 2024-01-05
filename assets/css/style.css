@@ -80,33 +80,6 @@ h2{
     background-color:  #2c3244;
 }
 
-/* Styling for X and O */
-#XO {
- 
-    position: absolute;
-}
-
-#O, #X {
-    margin: 55px;
-}
-
-#X {
-    color: rgba(255, 0, 0, 0.419);
-}
-
-#O {
-    color: rgba(0, 0, 255, 0.419);
-}
-
-/* Hover effects for X and O */
-#O:hover {
-    color: rgb(0, 0, 255);
-}
-
-#X:hover {
-    color: rgb(255, 0, 0);
-}
-
 /* Styling for the game container */
 #game-container {
     display: flex;
@@ -122,21 +95,7 @@ h2{
     display: none;
 }
 
-/* Reset button styling */
-#reset {
-    margin: 20px ;
-    padding: 10px;
-    border-radius: 10px;
-    background-color: #3b4660;
-    color: #FFB000;
-    border: 1px solid #FFB000;
-    font-size: 20px;
-    cursor: pointer;
-    width: 150px;
-    max-width: 250px;
-    justify-content: center;
-    
-}
+
 
 /* Styling for turn container */
 #turnContainer, #winningMessage {
@@ -145,26 +104,8 @@ h2{
     
 }
 
-/* Start button styling */
-#start {
-    margin: 20px auto;
-    padding: 10px;
-    border-radius: 10px;
-    background-color: black;
-    color: white;
-    border: 1px solid white;
-    font-size: 20px;
-    cursor: pointer;
-}
-
-#gameControls{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-
-}
-#gameControls button{
+/*button stylings */
+.button{
     margin: 20px;
     padding: 10px;
     border-radius: 10px;
@@ -175,18 +116,33 @@ h2{
     cursor: pointer;
     width: 150px;
     max-width: 250px;
+    transition: background-color 0.3s, color 0.3s;
+    justify-content: center;
 }
 
-#gameControls button:hover{
+.button:hover{
     background-color:#FFB000;
     color:#3b4660
 }
 
+
+#gameControls{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
 /* Hover effect for start button */
 #start:hover {
     animation: jiggle 0.5s ease-in 1;
 }
-
+/* Responsiveness */
+@media only screen and (min-width: 769px) {
+    #gameControls {
+    flex-direction: row;
+}
+}
 /* Keyframes for jiggle animation taken from codepen */
 @keyframes jiggle {
     20% { transform: translateY(-13%); }
@@ -194,15 +150,7 @@ h2{
     60% { transform: translateY(-7%); }
     80% { transform: translateY(7%); }
 }
-
 /* Applying jiggle animation */
 .jiggle {
     animation: jiggle 0.5s ease-in-out;
-}
-
-@media only screen and (min-width: 769px) {
-    #gameControls {
-    flex-direction: row;
-
-}
 }
