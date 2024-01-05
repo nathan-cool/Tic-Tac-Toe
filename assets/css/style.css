@@ -262,8 +262,8 @@ h2 {
 
 @media only screen and (min-width: 1440px) {
     #gameboard {
-        max-width: 800px;
-        max-height: 800px;
+        max-width: 600px;
+        max-height: 600px;
     }
 
     .cell {
@@ -273,8 +273,8 @@ h2 {
 
 @media only screen and (min-width: 1920px) {
     #gameboard {
-        max-width: 1000px;
-        max-height: 1000px;
+        max-width: 850px;
+        max-height: 850px;
     }
 
     .cell {
