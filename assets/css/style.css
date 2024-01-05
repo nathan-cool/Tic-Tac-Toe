@@ -37,7 +37,7 @@ html, body {
 }
 
 h2{
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     margin-bottom: 10px;
     padding: 20px
 }
@@ -116,19 +116,24 @@ h2{
     margin: 10px;
     padding: 10px;
     display: none;
+   
+    
 }
 
 /* Reset button styling */
 #reset {
-    margin: 20px auto;
+    margin: 20px ;
     padding: 10px;
     border-radius: 10px;
-    background-color: black;
-    color: white;
-    border: 1px solid white;
+    background-color: #3b4660;
+    color: #FFB000;
+    border: 1px solid #FFB000;
     font-size: 20px;
     cursor: pointer;
+    width: 150px;
+    max-width: 250px;
     display: none;
+    
 }
 
 /* Styling for turn container */
@@ -150,6 +155,31 @@ h2{
     cursor: pointer;
 }
 
+#gameControls{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+#gameControls button{
+    margin: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #3b4660;
+    color: #FFB000;
+    border: 1px solid #FFB000;
+    font-size: 20px;
+    cursor: pointer;
+    width: 150px;
+    max-width: 250px;
+}
+
+#gameControls button:hover{
+    background-color:#FFB000;
+    color:#3b4660
+}
+
 /* Hover effect for start button */
 #start:hover {
     animation: jiggle 0.5s ease-in 1;
@@ -166,4 +196,11 @@ h2{
 /* Applying jiggle animation */
 .jiggle {
     animation: jiggle 0.5s ease-in-out;
+}
+
+@media only screen and (min-width: 769px) {
+    #gameControls {
+    flex-direction: row;
+
+}
 }
