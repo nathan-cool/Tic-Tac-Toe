@@ -1,56 +1,163 @@
 /* CSS Reset from Meyerweb (http://meyerweb.com/eric/tools/css/reset/) */
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 14px;
-	font: inherit;
-	vertical-align: baseline;
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
 }
 
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
 }
 
-html, body {
-  height: 100%; 
-  margin: 0; 
-  display: flex; 
-  justify-content: center;
-  align-items: center; 
-  background-color: #3b4660;
-  font-family: 'Quicksand', sans-serif;
+body {
+    line-height: 1;
 }
 
-h2{
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* Custom Styles */
+html,
+body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #3b4660;
+    font-family: 'Quicksand', sans-serif;
+}
+
+h2 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     margin-bottom: 10px;
-    padding: 20px
+    padding: 20px;
 }
+
 /* Styling for the gameboard */
 #gameboard {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-     grid-template-rows: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
     grid-gap: 0;
-    width: 80vw; 
+    width: 80vw;
     height: 80vw;
-    max-width: 500px; 
-    max-height: 500px; 
+    max-width: 500px;
+    max-height: 500px;
     border: 1px solid #2c3244;
 }
 
@@ -77,7 +184,7 @@ h2{
 
 /* Hover effect for cells */
 .cell:hover {
-    background-color:  #2c3244;
+    background-color: #2c3244;
 }
 
 /* Styling for the game container */
@@ -91,21 +198,19 @@ h2{
     display: none;
 }
 
-#winningMessage{
+#winningMessage {
     display: none;
 }
 
-
-
 /* Styling for turn container */
-#turnContainer, #winningMessage {
+#turnContainer,
+#winningMessage {
     color: #ffffff;
     font-size: 1.5rem;
-    
 }
 
-/*button stylings */
-.button{
+/* Button stylings */
+.button {
     margin: 20px;
     padding: 10px;
     border-radius: 10px;
@@ -120,36 +225,86 @@ h2{
     justify-content: center;
 }
 
-.button:hover{
-    background-color:#FFB000;
-    color:#3b4660
+.button:hover {
+    background-color: #FFB000;
+    color: #3b4660;
 }
 
-
-#gameControls{
+#gameControls {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-
 }
+
 /* Hover effect for start button */
 #start:hover {
     animation: jiggle 0.5s ease-in 1;
 }
+
 /* Responsiveness */
 @media only screen and (min-width: 769px) {
     #gameControls {
-    flex-direction: row;
+        flex-direction: row;
+    }
 }
+
+@media only screen and (min-width: 1024px) {
+    #gameboard {
+        width: 60vw;
+        height: 60vw;
+    }
+
+    .cell {
+        font-size: 3rem;
+    }
 }
-/* Keyframes for jiggle animation taken from codepen */
+
+@media only screen and (min-width: 1440px) {
+    #gameboard {
+        max-width: 800px;
+        max-height: 800px;
+    }
+
+    .cell {
+        font-size: 3.5rem;
+    }
+}
+
+@media only screen and (min-width: 1920px) {
+    #gameboard {
+        max-width: 1000px;
+        max-height: 1000px;
+    }
+
+    .cell {
+        font-size: 4rem;
+    }
+}
+
+/* Keyframes for jiggle animation */
 @keyframes jiggle {
-    20% { transform: translateY(-13%); }
-    40% { transform: translateY(13%); }
-    60% { transform: translateY(-7%); }
-    80% { transform: translateY(7%); }
+    20% {
+        transform: translateY(-13%);
+    }
+
+    40% {
+        transform: translateY(13%);
+    }
+
+    60% {
+        transform: translateY(-7%);
+    }
+
+    80% {
+        transform: translateY(7%);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
 }
+
 /* Applying jiggle animation */
 .jiggle {
     animation: jiggle 0.5s ease-in-out;
