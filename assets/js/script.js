@@ -116,12 +116,20 @@ function computersTurn() {
     }
 }
 
+ // Function to check if there is a winner
 function checkWinner() {
-    // Function to check if there is a winner
+    let winningMessageLetter = document.querySelector("#winningMessageLetter")
+    let winningMessage = document.querySelector("#winningMessage")
     for (let combo of winningCombinations) {
         if (combo.every(index => gameState[index] === "X")) {
+            winningMessageLetter.innerText = "X";
+            winningMessage.style.display = "flex";
+            turnLetter.style.display = "none";
             return combo; // Returns the winning combination for X
         } else if (combo.every(index => gameState[index] === "O")) {
+            winningMessageLetter.innerText = "O";
+            winningMessage.style.display = "flex";
+            turnLetter.style.display = "none";
             return combo; // Returns the winning combination for O
         }
     }
@@ -134,8 +142,11 @@ function restart() {
         gameState = [null, null, null, null, null, null, null, null, null]; // Resets the gameState
         gameBoard.forEach(cell => {
             cell.innerText = ""; // Clears all cells
-            turnLetter.style.opacity = "60%";
+            turn.innerText = "X";
             cell.classList.remove("jiggle"); // Removes jiggle effect from all cells
+            turnLetter.style.display = "flex";
+            winningMessage.style.display = "none";
+
             currentPlayer = "X"; // Resets current player to X
         });
     });

@@ -116,8 +116,10 @@ h2{
     margin: 10px;
     padding: 10px;
     display: none;
-   
-    
+}
+
+#winningMessage{
+    display: none;
 }
 
 /* Reset button styling */
@@ -132,12 +134,12 @@ h2{
     cursor: pointer;
     width: 150px;
     max-width: 250px;
-    display: none;
+    justify-content: center;
     
 }
 
 /* Styling for turn container */
-#turnContainer {
+#turnContainer, #winningMessage {
     color: #ffffff;
     font-size: 1.5rem;
     
