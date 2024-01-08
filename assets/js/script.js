@@ -34,14 +34,14 @@ function multiplayerOrSingle() {
     // Event listener for multiplayer button
     let multiplayer = document.querySelector("#multiplayerbutton");
     let singleplayer = document.querySelector("#singleplayerbutton");
+    let gameControls = document.querySelector("#gameControls")
     let gameContainer = document.querySelector("#game-container")
     if (singleplayer) {
         singleplayer.addEventListener("click", function () {
             multiPlayerSelected = false;
             singlePlayerSelected = true;
-            multiplayer.style.display = 'none'
-            singleplayer.style.display = 'none'
             gameContainer.style.display = 'flex'
+            gameControls.style.display = "none"
             startGame(); // Starts the game in multiplayer mode
         });
     }
@@ -50,9 +50,8 @@ function multiplayerOrSingle() {
         multiplayer.addEventListener("click", function () {
             multiPlayerSelected = true;
             singlePlayerSelected = false;
-            multiplayer.style.display = 'none'
-            singleplayer.style.display = 'none'
             gameContainer.style.display = 'flex'
+            gameControls.style.display = "none"
             startGame(); // Starts the game in single player mode
         });
     }

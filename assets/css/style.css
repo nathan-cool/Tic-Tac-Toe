@@ -7,12 +7,10 @@ applet,
 object,
 iframe,
 h1,
-h2,
 h3,
 h4,
 h5,
 h6,
-p,
 blockquote,
 pre,
 a,
@@ -33,7 +31,6 @@ s,
 samp,
 small,
 strike,
-strong,
 sub,
 sup,
 tt,
@@ -46,8 +43,6 @@ dl,
 dt,
 dd,
 ol,
-ul,
-li,
 fieldset,
 form,
 label,
@@ -232,10 +227,25 @@ h2 {
 
 #gameControls {
     display: flex;
+    margin: 15px;
+    padding: 10px;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 }
+
+#textContainer{
+font-family: 'Quicksand', sans-serif;
+    color: #ffffff;
+}
+
+#buttonContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
 
 /* Hover effect for start button */
 #start:hover {
@@ -243,16 +253,29 @@ h2 {
 }
 
 /* Responsiveness */
-@media only screen and (min-width: 769px) {
+@media only screen and (min-width: 640px) {
     #gameControls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 80vw;
+    height: 80vw;
+    margin-top: 50px;
+    max-width: 500px;
+    max-height: 500px;
+    border: 1px solid #2c3244;
+    }
+    #buttonContainer{
         flex-direction: row;
     }
 }
 
 @media only screen and (min-width: 1024px) {
-    #gameboard {
+    #gameboard, #gameControls{
         width: 60vw;
         height: 60vw;
+        font-size: 1em;
     }
 
     .cell {
@@ -261,9 +284,11 @@ h2 {
 }
 
 @media only screen and (min-width: 1440px) {
-    #gameboard {
+    #gameboard, #gameControls{
         max-width: 600px;
         max-height: 600px;
+        font-size: 1.2rem;
+        
     }
 
     .cell {
@@ -272,9 +297,10 @@ h2 {
 }
 
 @media only screen and (min-width: 1920px) {
-    #gameboard {
+    #gameboard, #gameControls {
         max-width: 850px;
         max-height: 850px;
+        font-size: 1.8rem;
     }
 
     .cell {

@@ -46,8 +46,29 @@
     </main>
     <!-- Control buttons for the game -->
     <div id="gameControls">
-        <button id="singleplayerbutton" class="button" >Single Player</button>
-        <button id="multiplayerbutton" class="button">MultiPlayer</button>
+        <div id="textContainer">
+    <h2>TIC-TAC-TOE</h2>
+    <p><strong>Goal:</strong> Get 3 of your marks in a row.</p>
+    <p><strong>Players:</strong> 2 players, X and O.</p>
+    <p><strong>Board:</strong> 9 squares, 3x3.</p>
+    <p><strong>How to Play:</strong></p>
+    <ul>
+        <li>Players take turns putting their mark in empty squares.</li>
+        <li>First to get 3 in a row wins.</li>
+    </ul>
+    <p><strong>Winning:</strong></p>
+    <ul>
+        <li>Line up 3 of your marks (horizontal, vertical, or diagonal).</li>
+        <li>If the board fills up, it's a tie.</li>
+    </ul>
+    <p><strong>After the Game:</strong> Clear the board to play again.</p>
+    <p>Have fun!</p>
+        
+    </div>
+        <div id="buttonContainer">
+            <button id="singleplayerbutton" class="button">Single Player</button>
+            <button id="multiplayerbutton" class="button">MultiPlayer</button>
+        </div>
     </div>
     <!-- Link to the external JavaScript file for game logic -->
     <script src="assets/js/script.js"></script>
