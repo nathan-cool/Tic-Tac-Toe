@@ -35,21 +35,21 @@ function multiplayerOrSingle() {
     let multiplayer = document.querySelector("#multiplayerbutton");
     let singleplayer = document.querySelector("#singleplayerbutton");
     let gameContainer = document.querySelector("#game-container")
-    if (multiplayer) {
-        multiplayer.addEventListener("click", function () {
-            multiPlayerSelected = true;
-            singlePlayerSelected = false;
+    if (singleplayer) {
+        singleplayer.addEventListener("click", function () {
+            multiPlayerSelected = false;
+            singlePlayerSelected = true;
             multiplayer.style.display = 'none'
             singleplayer.style.display = 'none'
             gameContainer.style.display = 'flex'
             startGame(); // Starts the game in multiplayer mode
         });
     }
-    if (singleplayer) {
+    if (multiplayer) {
         // Event listener for single player button
-        singleplayer.addEventListener("click", function () {
-            singlePlayerSelected = true;
-            multiPlayerSelected = false;
+        multiplayer.addEventListener("click", function () {
+            multiPlayerSelected = true;
+            singlePlayerSelected = false;
             multiplayer.style.display = 'none'
             singleplayer.style.display = 'none'
             gameContainer.style.display = 'flex'
@@ -94,12 +94,13 @@ function game() {
 
 function computersTurn() {
     // Handles the computer's turn logic
-    if (multiPlayerSelected == true) {
+    if (singlePlayerSelected == true) {
         let available = [];
 
         for (let i = 0; i < gameState.length; i++)
             if (gameState[i] === null) {
                 available.push(i); // Finds all available cells
+                console.log("test")
             }
         let random = Math.floor(Math.random() * available.length); // Selects a random cell
         let computerIndex = available[random];
@@ -110,6 +111,7 @@ function computersTurn() {
             jiggle(winner); // Apply jiggle effect if computer wins
             gameStillActive = false; // End the game if there's a winner
             return;
+            
         }
         switchPlayer(); // Switches player after computer's turn
         game(); // Continues the game
@@ -146,7 +148,6 @@ function restart() {
             cell.classList.remove("jiggle"); // Removes jiggle effect from all cells
             turnLetter.style.display = "flex";
             winningMessage.style.display = "none";
-
             currentPlayer = "X"; // Resets current player to X
         });
     });
@@ -155,10 +156,10 @@ function restart() {
 function switchPlayer() {
     // Function to switch between players
     if (multiPlayerSelected == true) {
-        player = player === computerPlayer ? currentPlayer : computerPlayer;
+        currentPlayer = currentPlayer === "X" ? "O" : "X";
         whosTurn(); // Updates the turn display
     } else if (singlePlayerSelected == true) {
-        currentPlayer = currentPlayer === "X" ? "O" : "X";
+        player = player === computerPlayer ? currentPlayer : computerPlayer;
         whosTurn(); // Updates the turn display for single player
     }
 }
