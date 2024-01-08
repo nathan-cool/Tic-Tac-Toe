@@ -20,7 +20,8 @@
 
 <body>
     <!-- Main game container -->
-    <main id="game-container" aria-label="Game Container">
+    <main id="game" aria-label="Game Container">
+        <div id="game-container">
         <!-- Container for displaying whose turn it is -->
         <div id="turnContainer">
             <h2>Its <span id="turn"></span>'s turn</h2>
@@ -43,7 +44,8 @@
         </section>
         <button id="reset" type="button" class="button">Reset</button>
         <button id="start" type="button" class="button">Start</button>
-    </main>
+        </div>
+    
     <!-- Control buttons for the game -->
     <div id="gameControls">
         <div id="textContainer">
@@ -70,8 +72,14 @@
             <button id="multiplayerbutton" class="button">MultiPlayer</button>
         </div>
     </div>
-    <!-- Link to the external JavaScript file for game logic -->
-    <script src="assets/js/script.js"></script>
+
+    </main>
+    <footer>
+        
+        
+    </footer>
 </body>
+<!-- Link to the external JavaScript file for game logic -->
+<script src="assets/js/script.js"></script>
 
 </html>
