@@ -1,4 +1,8 @@
-## User Story
+# Tic-Tac-Toe Game
+
+This project presents a simple yet engaging Tic-Tac-Toe game, designed to provide a fun, interactive experience for users. Aimed at users of all ages, this game offers both single and multiplayer options, adapting seamlessly across various devices.
+
+# User Story
 
 ## New User Stories
 
