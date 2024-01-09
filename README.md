@@ -31,6 +31,8 @@
 
 ## 404 Page
 ## Future Features
+- Add an AI opponent using minimax 
+- Implement a score tracking system.
 
 # Technologies Used
 ## Languages
@@ -195,3 +197,12 @@ Steps for deploying the project on GitHub Pages:
 I would like to express my gratitude to the Slack Community for their invaluable assistance. Stephen Seagrave for helping me throughout my coding. My mentor Brian Macharia.
 
 # Contents
+
+Tutorial and documentation used:
+
+https://www.w3schools.com/html/
+https://developer.mozilla.org/en-US/docs/
+https://css-tricks.com/
+AI
+https://www.youtube.com/watch?v=AnmwHjpEhtA
+https://www.youtube.com/watch?v=rA7tfvpkw0I
