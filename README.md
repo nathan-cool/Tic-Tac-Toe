@@ -184,15 +184,14 @@ Steps for deploying the project on GitHub Pages:
 2. Navigate to "Settings" and locate the "GitHub Pages" section.
 3. Select the main branch as the source and save the changes.
 
-## Device Testing
 ## HTML-W3C-Validator 
+
 ## CSS-Validator  
 ## Lighthouse testing
 ## Fixed Bugs
 ## Implementation
 
-# Deployment
-
 # Credits
+I would like to express my gratitude to the Slack Community for their invaluable assistance. Stephen Seagrave for helping me throughout my coding. My mentor Brian Macharia.
 
 # Contents
