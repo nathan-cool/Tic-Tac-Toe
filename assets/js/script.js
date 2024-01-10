@@ -11,6 +11,7 @@ let multiPlayerSelected = false; // Flag for multiplayer mode
 let singlePlayerSelected = false; // Flag for single player mode
 let winner = false; // Flag to indicate if there's a winner
 let player = currentPlayer; // Variable to track the current player
+let numberOfSquares = 9
 let winningCombinations = [
     // Defines the winning combinations on the board
     [0, 1, 2], // Top row
@@ -86,6 +87,7 @@ function game() {
                 if (singlePlayerSelected == true) {
                     setTimeout(computersTurn, 300); // Calls computer's turn after a delay
                 }
+               
             }
         });
     });
@@ -133,8 +135,36 @@ function checkWinner() {
             turnLetter.style.display = "none";
             return combo; // Returns the winning combination for O
         }
+        tie();
     }
 }
+
+ // Function to check if there is a tie
+function tie() {
+    let tieChecker = 0
+    for (let i = 0; i < gameState.length; i++) {
+        if (gameState[i] != null) {
+            tieChecker++
+        }
+    }
+    if (tieChecker == numberOfSquares && winner == false) {
+        winningMessageLetter.innerText = "Tie!";
+        winningMessage.style.display = "flex";
+        winningMessage.style.innerText = "";
+        turnLetter.style.display = "none";
+        
+    }
+}
+
+function minimax() {
+    let scores = { X: 10, tie: 0, O: -10 } // X is max, O is min
+    let outcome = checkWinner() 
+    if (checkWinner != null) { // If a winner etc was found 
+        return outcome[scores] // Return the outcome[score] example, x[-10]
+    }
+    
+}
+    
 
 function restart() {
     // Function to handle game restart
