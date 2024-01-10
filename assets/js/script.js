@@ -12,6 +12,8 @@ let singlePlayerSelected = false; // Flag for single player mode
 let winner = false; // Flag to indicate if there's a winner
 let player = currentPlayer; // Variable to track the current player
 let numberOfSquares = 9
+let gameControls = document.querySelector("#gameControls")
+let gameContainer = document.querySelector("#game-container")
 let winningCombinations = [
     // Defines the winning combinations on the board
     [0, 1, 2], // Top row
@@ -29,7 +31,7 @@ let gameStillActive = true; // Flag to indicate if the game is still active
 multiplayerOrSingle(); // Calls function to choose between multiplayer or single player
 restart(); // Calls function to handle game restart
 whosTurn(); // Calls function to display who's turn it is
-
+informationIcon();
 // Function to choose between multiplayer or single player
 function multiplayerOrSingle() {
     // Event listener for multiplayer button
@@ -162,7 +164,7 @@ function minimax() {
     if (checkWinner != null) { // If a winner etc was found 
         return outcome[scores] // Return the outcome[score] example, x[-10]
     }
-    
+
 }
     
 
@@ -212,4 +214,12 @@ function jiggle() {
             gameBoard[index].classList.add("jiggle");
         });
     }
+}
+
+function informationIcon(){
+    let infoClick = document.querySelector(".navigation-link")
+    infoClick.addEventListener("click", function () {
+        gameControls.style.display = "flex"
+        gameContainer.style.display = "none"
+    })
 }

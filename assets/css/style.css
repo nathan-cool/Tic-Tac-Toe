@@ -159,16 +159,53 @@ footer{
     width: 100%;
     background-color: #2c3244
 }
+
+
+
+/* Header structure */
+header {
+    width: 100%;
+    background-color: #2c3244;
+}
+
+#navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Aligns items vertically in the center */
+    padding: 5px 10px;
+    /* Adjust padding for spacing */
+}
+
+#logo {
+    height: 30px;
+    filter: grayscale(25%);
+    margin-top: 2.5px;
+}
+
+.navigation-link {
+    color: #FFB000;
+    font-size: 30px;
+    text-decoration: none;
+    padding: 0 20px;
+    /* Adjust as needed for spacing */
+}
+
+/* Adjust the height and line-height of the nav to center items vertically */
+nav {
+    height: 30px;
+  
+}
 /* Styling for the gameboard */
 #gameboard {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
     grid-gap: 0;
-    width: 80vw;
-    height: 80vw;
-    max-width: 500px;
-    max-height: 500px;
+    width: 50vw;
+    height: 50vw;
+    max-width: 400px;
+    max-height: 450px;
     border: 1px solid #2c3244;
 }
 
@@ -223,7 +260,7 @@ flex-direction: column;
 #turnContainer,
 #winningMessage {
     color: #ffffff;
-    font-size: 1.5rem;
+    font-size: 1rem;
 }
 
 /* Button stylings */
@@ -259,6 +296,7 @@ flex-direction: column;
 #textContainer {
     font-family: 'Quicksand', sans-serif;
     color: #ffffff;
+    font-size: .75rem;
 }
 
 #buttonContainer {
@@ -281,25 +319,37 @@ flex-direction: column;
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
-        width: 80vw;
-        height: 80vw;
+        width: 50vw;
+        height: 50vw;
         margin-top: 50px;
-        max-width: 500px;
-        max-height: 500px;
+        max-width: 400px;
+        max-height: 400px;
         border: 1px solid #2c3244;
     }
 
     #buttonContainer {
         flex-direction: row;
     }
+        header {
+            height: 40px;
+            width: 100%;
+            background-color: #2c3244;
+    
+        }
+    
+        #logo {
+            height: 35px;
+            margin-top: 3px;
+            
+        }
 }
 
 @media only screen and (min-width: 1024px) {
 
     #gameboard,
     #gameControls {
-        width: 60vw;
-        height: 60vw;
+        width: 40vw;
+        height: 40vw;
         font-size: 1em;
     }
 
@@ -312,8 +362,8 @@ flex-direction: column;
 
     #gameboard,
     #gameControls {
-        max-width: 500px;
-        max-height: 500px;
+        max-width: 400px;
+        max-height: 400px;
         font-size: 1rem;
 
     }
@@ -363,4 +413,8 @@ flex-direction: column;
 /* Applying jiggle animation */
 .jiggle {
     animation: jiggle 0.5s ease-in-out;
+}
+
+#navigation-link:hover{
+
 }
