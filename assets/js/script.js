@@ -15,6 +15,8 @@ let player = currentPlayer; // Variable to track the current player
 let numberOfSquares = 9
 let gameControls = document.querySelector("#gameControls")
 let gameContainer = document.querySelector("#game-container")
+let isCooldown = false;
+let cellHover = document.querySelector(".cell")
 let winningCombinations = [
     // Defines the winning combinations on the board
     [0, 1, 2], // Top row
@@ -31,6 +33,7 @@ let easySelected = false;
 let normalSelected = false;
 let hardSelected = false;
 let wins = document.querySelector("#wins")
+
 
 
 // Initial setup functions
@@ -60,7 +63,7 @@ function multiplayerOrSingle() {
             multiPlayerSelected = true;
             singlePlayerSelected = false;
             startGame()
-             // Starts the game in single player mode
+            // Starts the game in single player mode
         });
     }
 }
@@ -111,18 +114,22 @@ function game() {
     gameBoard.forEach((cell, index) => {
         // Adding click event listener to each cell
         cell.addEventListener("click", function (event) {
-            if (!gameStillActive) return; // Prevent action if game is over
+            if (!gameStillActive || isCooldown) return; // Prevent action if game is over or cooldown is active
             turnLetter.style.opacity = "100%";
             if (gameState[index] == null) { // Check if cell is empty
                 gameState[index] = currentPlayer; // Update gameState with current player's move
                 cell.innerText = currentPlayer; // Display current player's symbol in cell
                 let winner = checkWinner(); // Check if there's a winner
                 if (winner) {
-                    jiggle(winner); // Apply jiggle effect to winning combination
-                    gameStillActive = false; // Set game as over
                     event.preventDefault();
+                    jiggle(winner); // Apply jiggle effect to winning combination
                     return;
                 }
+                isCooldown = true;
+                
+                setTimeout(() => {
+                    isCooldown = false; 
+                }, 300);
                 switchPlayer();
                 if (singlePlayerSelected && easySelected) {
                     setTimeout(computersTurnEasy, 300); // Calls computer's turn after a dela
@@ -208,7 +215,7 @@ function computersTurnHard() {
     }
 }
 
- // Function to check if there is a winner
+// Function to check if there is a winner
 function checkWinner() {
     let winningMessageLetter = document.querySelector("#winningMessageLetter")
     let winningMessage = document.querySelector("#winningMessage")
@@ -228,7 +235,7 @@ function checkWinner() {
     }
 }
 
- // Function to check if there is a tie
+// Function to check if there is a tie
 function tie() {
     let tieChecker = 0
     for (let i = 0; i < gameState.length; i++) {
@@ -242,20 +249,20 @@ function tie() {
         winningMessage.style.innerText = "";
         turnLetter.style.display = "none";
         wins.innerText = "";
-        
+
     }
 }
 
 function minimax() {
     let scores = { X: 10, tie: 0, O: -10 } // X is max, O is min
-    let outcome = checkWinner() 
+    let outcome = checkWinner()
     if (checkWinner != null) { // If a winner etc was found 
         return outcome[scores] // Return the outcome[score] example, x[-10]
     }
 
 
 }
-    
+
 
 function restart() {
     // Function to handle game restart
@@ -270,7 +277,7 @@ function restart() {
             winningMessage.style.display = "none";
             currentPlayer = "X"; // Resets current player to X
         });
-    });
+    }); wins.innerText = " wins!";
 }
 
 function switchPlayer() {
@@ -304,11 +311,10 @@ function jiggle() {
     }
 }
 
-function informationIcon(){
+function informationIcon() {
     let infoClick = document.querySelector(".navigation-link")
     infoClick.addEventListener("click", function () {
         gameControls.style.display = "flex"
         gameContainer.style.display = "none"
     })
 }
-
