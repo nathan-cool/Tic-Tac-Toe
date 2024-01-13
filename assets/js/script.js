@@ -4,6 +4,7 @@ let turnLetter = document.querySelector("#turnContainer"); // Selects the elemen
 let resetButton = document.querySelector("#reset"); // Selects the reset button
 let turn = document.querySelector("#turn"); // Selects the element showing whose turn it is
 let startButton = document.querySelector("#start"); // Selects the start game button
+let difficulty = document.querySelector("#difficulty")
 let gameState = [null, null, null, null, null, null, null, null, null]; // Initializes the game state array
 let currentPlayer = "X"; // Sets the current player to X
 let computerPlayer = "O"; // Sets the computer player to O
@@ -43,9 +44,9 @@ function multiplayerOrSingle() {
         singleplayer.addEventListener("click", function () {
             multiPlayerSelected = false;
             singlePlayerSelected = true;
-            gameContainer.style.display = 'flex'
+            difficulty.style.display = 'flex'
             gameControls.style.display = "none"
-            startGame(); // Starts the game in multiplayer mode
+            // Starts the game in multiplayer mode
         });
     }
     if (multiplayer) {
@@ -53,11 +54,16 @@ function multiplayerOrSingle() {
         multiplayer.addEventListener("click", function () {
             multiPlayerSelected = true;
             singlePlayerSelected = false;
-            gameContainer.style.display = 'flex'
+            difficulty.style.display = 'flex'
             gameControls.style.display = "none"
-            startGame(); // Starts the game in single player mode
+             // Starts the game in single player mode
         });
     }
+}
+
+function difficultyToStart() {
+    
+    gameContainer.style.display = 'flex'
 }
 
 // Function to start the game
@@ -223,3 +229,4 @@ function informationIcon(){
         gameContainer.style.display = "none"
     })
 }
+

@@ -415,6 +415,20 @@ flex-direction: column;
     animation: jiggle 0.5s ease-in-out;
 }
 
-#navigation-link:hover{
+#difficulty{
+width: 50vw;
+height: 50vw;
+max-width: 400px;
+max-height: 450px;
+border: 1px solid #2c3244;
+padding: 10px;
+display: none;
+}
 
+#difficultyContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
 }
