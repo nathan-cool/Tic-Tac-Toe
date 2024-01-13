@@ -38,7 +38,7 @@
             <h2>Its <span id="turn"></span>'s turn</h2>
         </div>
         <div id="winningMessage">
-            <h2><span id="winningMessageLetter"> </span> wins!</h2> 
+            <h2><span id="winningMessageLetter"> </span><span id="wins">wins!</span> </h2> 
         </div>
         <!-- Game board with individual cells -->
         <section id="gameboard" aria-label="Game Board">
@@ -54,11 +54,10 @@
             <div class="cell" data-row="2" data-col="2"></div>
         </section>
         <button id="reset" type="button" class="button">Reset</button>
-        <button id="start" type="button" class="button">Start</button>
         </div>
     
     <!-- Control buttons for the game -->
-    <div id="gameControls">
+    <div id="gameControls" class="board">
         <div id="textContainer">
     <h2>TIC-TAC-TOE</h2>
     <p><strong>Goal:</strong> Get 3 of your marks in a row.</p>
@@ -83,10 +82,11 @@
             <button id="multiplayerbutton" class="button">MultiPlayer</button>
         </div>
     </div>
-    <div id="difficulty">
+    <div id="difficulty" class="board">
         <div id="difficultyContainer">
-            <button id="singleplayerbutton" class="button">Easy</button>
-            <button id="multiplayerbutton" class="button">Hard</button>
+            <button id="easyButton" class="button">Easy</button>
+            <button id="normalButton" class="button">Normal</button>
+            <button id="hardButton" class="button">Hard</button>
         </div>
     </div>
 

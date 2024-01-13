@@ -26,26 +26,31 @@ let winningCombinations = [
     [0, 4, 8], // Diagonal top-left to bottom-right
     [2, 4, 6] // Diagonal top-right to bottom-left
 ];
-let gameStillActive = true; // Flag to indicate if the game is still active
+let gameStillActive = true;// Flag to indicate if the game is still active
+let easySelected = false;
+let normalSelected = false;
+let hardSelected = false;
+let wins = document.querySelector("#wins")
+
 
 // Initial setup functions
 multiplayerOrSingle(); // Calls function to choose between multiplayer or single player
 restart(); // Calls function to handle game restart
 whosTurn(); // Calls function to display who's turn it is
 informationIcon();
+difficultyToStart();
 // Function to choose between multiplayer or single player
 function multiplayerOrSingle() {
     // Event listener for multiplayer button
     let multiplayer = document.querySelector("#multiplayerbutton");
     let singleplayer = document.querySelector("#singleplayerbutton");
     let gameControls = document.querySelector("#gameControls")
-    let gameContainer = document.querySelector("#game-container")
     if (singleplayer) {
         singleplayer.addEventListener("click", function () {
             multiPlayerSelected = false;
             singlePlayerSelected = true;
             difficulty.style.display = 'flex'
-            gameControls.style.display = "none"
+            gameControls.style.display = 'none'
             // Starts the game in multiplayer mode
         });
     }
@@ -54,23 +59,50 @@ function multiplayerOrSingle() {
         multiplayer.addEventListener("click", function () {
             multiPlayerSelected = true;
             singlePlayerSelected = false;
-            difficulty.style.display = 'flex'
-            gameControls.style.display = "none"
+            startGame()
              // Starts the game in single player mode
         });
     }
 }
 
 function difficultyToStart() {
-    
-    gameContainer.style.display = 'flex'
+    let easyButton = document.querySelector("#easyButton")
+    let normalButton = document.querySelector("#normalButton")
+    let hardButton = document.querySelector("#hardButton")
+    if (easyButton) {
+        easyButton.addEventListener("click", function () {
+            easySelected = true;
+            normalSelected = false;
+            hardSelected = false;
+            startGame()
+        })
+    }
+    if (normalButton) {
+        normalButton.addEventListener("click", function () {
+            easySelected = false;
+            normalSelected = true;
+            hardSelected = false;
+            startGame()
+        })
+    }
+    if (hardButton) {
+        hardButton.addEventListener("click", function () {
+            easySelected = false;
+            normalSelected = false;
+            hardSelected = true;
+            startGame()
+        })
+    }
+
 }
 
 // Function to start the game
 function startGame() {
-    startButton.style.display = "none"; // Hides the start button
+    difficulty.style.display = 'none'
+    gameControls.style.display = 'none'
     resetButton.style.display = "flex"; // Shows the reset button
     turnLetter.style.opacity = "1"; // Makes the turn display visible
+    gameContainer.style.display = "flex";
     game(); // Calls the function to handle the game logic
 }
 
@@ -92,20 +124,22 @@ function game() {
                     return;
                 }
                 switchPlayer();
-                if (singlePlayerSelected == true) {
-                    setTimeout(computersTurn, 300); // Calls computer's turn after a delay
+                if (singlePlayerSelected && easySelected) {
+                    setTimeout(computersTurnEasy, 300); // Calls computer's turn after a dela
+                } else if (singlePlayerSelected && normalSelected) {
+                    setTimeout(computersTurnNormal, 300); // Calls computer's turn after a delay
+                } else if (singlePlayerSelected && hardSelected) {
+                    setTimeout(computersTurnHard, 300); // Calls computer's turn after a delay
                 }
-               
             }
         });
     });
 }
 
-function computersTurn() {
+function computersTurnEasy() {
     // Handles the computer's turn logic
     if (singlePlayerSelected == true) {
         let available = [];
-
         for (let i = 0; i < gameState.length; i++)
             if (gameState[i] === null) {
                 available.push(i); // Finds all available cells
@@ -120,7 +154,54 @@ function computersTurn() {
             jiggle(winner); // Apply jiggle effect if computer wins
             gameStillActive = false; // End the game if there's a winner
             return;
-            
+        }
+        switchPlayer(); // Switches player after computer's turn
+        game(); // Continues the game
+    }
+}
+
+function computersTurnNormal() {
+    // Handles the computer's turn logic
+    if (singlePlayerSelected == true) {
+        let available = [];
+        for (let i = 0; i < gameState.length; i++)
+            if (gameState[i] === null) {
+                available.push(i); // Finds all available cells
+                console.log("test")
+            }
+        let random = Math.floor(Math.random() * available.length); // Selects a random cell
+        let computerIndex = available[random];
+        gameState[computerIndex] = computerPlayer; // Sets the computer's move in gameState
+        gameBoard[computerIndex].innerText = computerPlayer; // Displays computer's move
+        let winner = checkWinner();
+        if (winner) {
+            jiggle(winner); // Apply jiggle effect if computer wins
+            gameStillActive = false; // End the game if there's a winner
+            return;
+        }
+        switchPlayer(); // Switches player after computer's turn
+        game(); // Continues the game
+    }
+}
+
+function computersTurnHard() {
+    // Handles the computer's turn logic
+    if (singlePlayerSelected == true) {
+        let available = [];
+        for (let i = 0; i < gameState.length; i++)
+            if (gameState[i] === null) {
+                available.push(i); // Finds all available cells
+                console.log("test")
+            }
+        let random = Math.floor(Math.random() * available.length); // Selects a random cell
+        let computerIndex = available[random];
+        gameState[computerIndex] = computerPlayer; // Sets the computer's move in gameState
+        gameBoard[computerIndex].innerText = computerPlayer; // Displays computer's move
+        let winner = checkWinner();
+        if (winner) {
+            jiggle(winner); // Apply jiggle effect if computer wins
+            gameStillActive = false; // End the game if there's a winner
+            return;
         }
         switchPlayer(); // Switches player after computer's turn
         game(); // Continues the game
@@ -160,6 +241,7 @@ function tie() {
         winningMessage.style.display = "flex";
         winningMessage.style.innerText = "";
         turnLetter.style.display = "none";
+        wins.innerText = "";
         
     }
 }
@@ -170,6 +252,7 @@ function minimax() {
     if (checkWinner != null) { // If a winner etc was found 
         return outcome[scores] // Return the outcome[score] example, x[-10]
     }
+
 
 }
     
@@ -194,11 +277,10 @@ function switchPlayer() {
     // Function to switch between players
     if (multiPlayerSelected == true) {
         currentPlayer = currentPlayer === "X" ? "O" : "X";
-        whosTurn(); // Updates the turn display
     } else if (singlePlayerSelected == true) {
         player = player === computerPlayer ? currentPlayer : computerPlayer;
-        whosTurn(); // Updates the turn display for single player
     }
+    whosTurn(); // Updates the turn display for single player
 }
 
 function whosTurn() {
