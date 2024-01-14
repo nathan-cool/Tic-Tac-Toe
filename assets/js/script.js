@@ -126,9 +126,9 @@ function game() {
                     return;
                 }
                 isCooldown = true;
-                
+
                 setTimeout(() => {
-                    isCooldown = false; 
+                    isCooldown = false;
                 }, 300);
                 switchPlayer();
                 if (singlePlayerSelected && easySelected) {
@@ -192,26 +192,28 @@ function computersTurnNormal() {
 }
 
 function computersTurnHard() {
-    // Handles the computer's turn logic
-    if (singlePlayerSelected == true) {
-        let available = [];
-        for (let i = 0; i < gameState.length; i++)
-            if (gameState[i] === null) {
-                available.push(i); // Finds all available cells
-                console.log("test")
+    let bestScore = -Infinity;
+    let bestMove;
+    for (let i = 0; i < gameState.length; i++) {
+        if (gameState[i] === null) {
+            gameState[i] = computerPlayer;
+            let score = minimax(gameState, 0, false);
+            gameState[i] = null;
+            if (score > bestScore) {
+                bestScore = score;
+                bestMove = i;
             }
-        let random = Math.floor(Math.random() * available.length); // Selects a random cell
-        let computerIndex = available[random];
-        gameState[computerIndex] = computerPlayer; // Sets the computer's move in gameState
-        gameBoard[computerIndex].innerText = computerPlayer; // Displays computer's move
-        let winner = checkWinner();
-        if (winner) {
-            jiggle(winner); // Apply jiggle effect if computer wins
-            gameStillActive = false; // End the game if there's a winner
-            return;
         }
-        switchPlayer(); // Switches player after computer's turn
-        game(); // Continues the game
+    }
+    gameState[bestMove] = computerPlayer;
+    gameBoard[bestMove].innerText = computerPlayer;
+    let winner = checkWinner();
+    if (winner) {
+        jiggle(winner);
+        gameStillActive = false;
+    } else {
+        switchPlayer();
+        game();
     }
 }
 
@@ -253,39 +255,38 @@ function tie() {
     }
 }
 
-    function minimax(board, depth, isMaximizing) {
-        let result = checkWinner();
-        let scores = { X: -10, O: 10, tie: 0 };
+function minimax(board, depth, isMaximizing) {
+    let result = checkWinner();
+    let scores = { 'X': -10, 'O': 10, 'tie': 0 };
 
-        if (result !== null) {     // If a winner etc was found
-            return scores[result]; // Return the outcome[score] example, x[-10]
-        }
-
-        if (isMaximizing) {
-            let bestScore = -Infinity;
-            for (let i = 0; i < board.length; i++) {
-                if (board[i] === null) {
-                    board[i] = computerPlayer;
-                    let score = minimax(board, depth + 1, false);
-                    board[i] = null;
-                    bestScore = Math.max(score, bestScore);
-                }
-            }
-            return bestScore;
-        } else {
-            let bestScore = Infinity;
-            for (let i = 0; i < board.length; i++) {
-                if (board[i] === null) {
-                    board[i] = currentPlayer;
-                    let score = minimax(board, depth + 1, true);
-                    board[i] = null;
-                    bestScore = Math.min(score, bestScore);
-                }
-            }
-            return bestScore;
-        }
+    if (result !== null) {
+        return scores[result];
     }
 
+    if (isMaximizing) {
+        let bestScore = -Infinity;
+        for (let i = 0; i < board.length; i++) {
+            if (board[i] === null) {
+                board[i] = computerPlayer;
+                let score = minimax(board, depth + 1, false);
+                board[i] = null;
+                bestScore = Math.max(score, bestScore);
+            }
+        }
+        return bestScore;
+    } else {
+        let bestScore = Infinity;
+        for (let i = 0; i < board.length; i++) {
+            if (board[i] === null) {
+                board[i] = currentPlayer;
+                let score = minimax(board, depth + 1, true);
+                board[i] = null;
+                bestScore = Math.min(score, bestScore);
+            }
+        }
+        return bestScore;
+    }
+}
 
 
 function restart() {
