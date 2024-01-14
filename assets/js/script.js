@@ -253,15 +253,39 @@ function tie() {
     }
 }
 
-function minimax() {
-    let scores = { X: 10, tie: 0, O: -10 } // X is max, O is min
-    let outcome = checkWinner()
-    if (checkWinner != null) { // If a winner etc was found 
-        return outcome[scores] // Return the outcome[score] example, x[-10]
+    function minimax(board, depth, isMaximizing) {
+        let result = checkWinner();
+        let scores = { X: -10, O: 10, tie: 0 };
+
+        if (result !== null) {     // If a winner etc was found
+            return scores[result]; // Return the outcome[score] example, x[-10]
+        }
+
+        if (isMaximizing) {
+            let bestScore = -Infinity;
+            for (let i = 0; i < board.length; i++) {
+                if (board[i] === null) {
+                    board[i] = computerPlayer;
+                    let score = minimax(board, depth + 1, false);
+                    board[i] = null;
+                    bestScore = Math.max(score, bestScore);
+                }
+            }
+            return bestScore;
+        } else {
+            let bestScore = Infinity;
+            for (let i = 0; i < board.length; i++) {
+                if (board[i] === null) {
+                    board[i] = currentPlayer;
+                    let score = minimax(board, depth + 1, true);
+                    board[i] = null;
+                    bestScore = Math.min(score, bestScore);
+                }
+            }
+            return bestScore;
+        }
     }
 
-
-}
 
 
 function restart() {
