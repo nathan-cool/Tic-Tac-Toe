@@ -28,13 +28,11 @@ let winningCombinations = [
     [0, 4, 8], // Diagonal top-left to bottom-right
     [2, 4, 6] // Diagonal top-right to bottom-left
 ];
-let gameStillActive = true;// Flag to indicate if the game is still active
+let gameStillActive = true; // Flag to indicate if the game is still active
 let easySelected = false;
 let normalSelected = false;
 let hardSelected = false;
 let wins = document.querySelector("#wins")
-
-
 
 // Initial setup functions
 multiplayerOrSingle(); // Calls function to choose between multiplayer or single player
@@ -114,13 +112,15 @@ function game() {
     gameBoard.forEach((cell, index) => {
         // Adding click event listener to each cell
         cell.addEventListener("click", function (event) {
-            if (!gameStillActive || isCooldown) return; // Prevent action if game is over or cooldown is active
+            if (!gameStillActive || isCooldown) return; // If the game is over or the cell is not empty, return
             turnLetter.style.opacity = "100%";
             if (gameState[index] == null) { // Check if cell is empty
                 gameState[index] = currentPlayer; // Update gameState with current player's move
                 cell.innerText = currentPlayer; // Display current player's symbol in cell
-                let winner = checkWinner(); // Check if there's a winner
+                let winner = checkWinner(); // Check if there's a winner after the move
+
                 if (winner) {
+                    updateUIAfterCheck(winner);
                     event.preventDefault();
                     jiggle(winner); // Apply jiggle effect to winning combination
                     return;
@@ -143,8 +143,7 @@ function game() {
     });
 }
 
-function computersTurnEasy() {
-    // Handles the computer's turn logic
+function computersTurnEasy() { // Function to handle the computer's turn
     if (singlePlayerSelected == true) {
         let available = [];
         for (let i = 0; i < gameState.length; i++)
@@ -153,12 +152,13 @@ function computersTurnEasy() {
                 console.log("test")
             }
         let random = Math.floor(Math.random() * available.length); // Selects a random cell
-        let computerIndex = available[random];
+        let computerIndex = available[random]; // Gets the index of the random cell
         gameState[computerIndex] = computerPlayer; // Sets the computer's move in gameState
         gameBoard[computerIndex].innerText = computerPlayer; // Displays computer's move
         let winner = checkWinner();
         if (winner) {
             jiggle(winner); // Apply jiggle effect if computer wins
+            updateUIAfterCheck(winner)
             gameStillActive = false; // End the game if there's a winner
             return;
         }
@@ -168,94 +168,91 @@ function computersTurnEasy() {
 }
 
 function computersTurnNormal() {
-    // Handles the computer's turn logic
-    if (singlePlayerSelected == true) {
-        let available = [];
-        for (let i = 0; i < gameState.length; i++)
-            if (gameState[i] === null) {
-                available.push(i); // Finds all available cells
-                console.log("test")
-            }
-        let random = Math.floor(Math.random() * available.length); // Selects a random cell
-        let computerIndex = available[random];
-        gameState[computerIndex] = computerPlayer; // Sets the computer's move in gameState
-        gameBoard[computerIndex].innerText = computerPlayer; // Displays computer's move
-        let winner = checkWinner();
-        if (winner) {
-            jiggle(winner); // Apply jiggle effect if computer wins
-            gameStillActive = false; // End the game if there's a winner
-            return;
-        }
-        switchPlayer(); // Switches player after computer's turn
-        game(); // Continues the game
-    }
+    let random = Math.floor(Math.random() * 10);
+    if (random < 5) {
+        computersTurnEasy()
+    } else
+        computersTurnHard()
 }
 
 function computersTurnHard() {
-    let bestScore = -Infinity;
-    let bestMove;
-    for (let i = 0; i < gameState.length; i++) {
-        if (gameState[i] === null) {
-            gameState[i] = computerPlayer;
-            let score = minimax(gameState, 0, false);
-            gameState[i] = null;
-            if (score > bestScore) {
-                bestScore = score;
-                bestMove = i;
+    let bestScore = -Infinity; // Sets the best score to -Infinity
+    let bestMove; // Variable to store the best move
+    for (let i = 0; i < gameState.length; i++) { // Loops through all cells
+        if (gameState[i] === null) { // Checks if cell is empty
+            gameState[i] = computerPlayer; // Sets the computer's move in gameState
+            let score = minimax(gameState, 0, false); // Calls the minimax algorithm
+            gameState[i] = null; // Resets the cell to empty
+            if (score > bestScore) { // Checks if the score is better than the best score
+                bestScore = score; // Updates the best score
+                bestMove = i; // Updates the best move
             }
         }
     }
-    gameState[bestMove] = computerPlayer;
-    gameBoard[bestMove].innerText = computerPlayer;
-    let winner = checkWinner();
-    if (winner) {
-        jiggle(winner);
-        gameStillActive = false;
+    gameState[bestMove] = computerPlayer; // Sets the computer's move in gameState
+    gameBoard[bestMove].innerText = computerPlayer; // Displays computer's move
+    let winner = checkWinner(); // Checks if there's a winner
+    if (winner) { // If there's a winner
+        jiggle(winner); // Apply jiggle effect if computer wins
+        updateUIAfterCheck(winner) // Updates the UI
+        gameStillActive = false; // End the game if there's a winner
     } else {
         switchPlayer();
         game();
     }
 }
 
-// Function to check if there is a winner
 function checkWinner() {
+    for (let combo of winningCombinations) {
+        if (combo.every(index => gameState[index] === "X")) { // Checks if X wins
+            return 'X'; // X wins
+        } else if (combo.every(index => gameState[index] === "O")) { // Checks if O wins
+            return 'O'; // O wins
+        }
+    }
+    
+    if (gameState.every(cell => cell !== null)) { 
+        return 'tie'; // Game is a tie
+    }
+    return null; // Game is still ongoing
+}
+
+function updateUIAfterCheck(result) {
     let winningMessageLetter = document.querySelector("#winningMessageLetter");
     let winningMessage = document.querySelector("#winningMessage");
-    let tieChecker = 0;
 
-    for (let combo of winningCombinations) {
-        if (combo.every(index => gameState[index] === "X")) {
-            winningMessageLetter.innerText = "X";
-            winningMessage.style.display = "flex";
-            turnLetter.style.display = "none";
-            return combo; // Returns the winning combination for X
-        } else if (combo.every(index => gameState[index] === "O")) {
-            winningMessageLetter.innerText = "O";
-            winningMessage.style.display = "flex";
-            turnLetter.style.display = "none";
-            return combo; // Returns the winning combination for O
-        }
-    }
-
-    // Check for a tie
-    for (let i = 0; i < gameState.length; i++) {
-        if (gameState[i] != null) {
-            tieChecker++;
-        }
-    }
-
-    if (tieChecker === numberOfSquares) {
+    if (result === 'X' || result === 'O') {
+        // Display the winner
+        winningMessageLetter.innerText = result;
+        winningMessage.style.display = "flex";
+        turnLetter.style.display = "none";
+        jiggle(result); // Function to highlight the winning combination
+    } else if (result === 'tie') {
+        // Display a tie message
         winningMessageLetter.innerText = "Tie!";
         winningMessage.style.display = "flex";
-        winningMessage.style.innerText = "";
         turnLetter.style.display = "none";
-        wins.innerText = "";
     }
 }
 
-function minimax(board, depth, isMaximizing) {
-    let result = checkWinner();
-    let scores = { 'X': -10, 'O': 10, 'tie': 0 };
+function jiggle(winner) {
+    let winningCombination = winningCombinations.find(combo =>  // Finds the winning combination
+        combo.every(index => gameState[index] === winner) // Checks if the winning combination is the same as the winner
+    );
+    if (winningCombination) { // If there's a winning combination
+        winningCombination.forEach(index => { // Apply jiggle effect to each cell in the winning combination
+            gameBoard[index].classList.add("jiggle") // Adds jiggle effect to the winning combination
+        });
+    }
+}
+
+function minimax(board, depth, isMaximizing) { // Minimax algorithm
+    let result = checkWinner(); 
+    let scores = {
+        'X': -10,
+        'O': 10,
+        'tie': 0
+    };
 
     if (result !== null) {
         return scores[result];
@@ -286,7 +283,6 @@ function minimax(board, depth, isMaximizing) {
     }
 }
 
-
 function restart() {
     // Function to handle game restart
     resetButton.addEventListener("click", function () {
@@ -300,7 +296,8 @@ function restart() {
             winningMessage.style.display = "none";
             currentPlayer = "X"; // Resets current player to X
         });
-    }); wins.innerText = " wins!";
+    });
+    wins.innerText = " wins!";
 }
 
 function switchPlayer() {
@@ -324,20 +321,13 @@ function whosTurn() {
     }
 }
 
-function jiggle() {
-    // Function to add jiggle effect to winning cells
-    let winner = checkWinner()
-    if (winner) {
-        winner.forEach(index => {
-            gameBoard[index].classList.add("jiggle");
-        });
-    }
-}
-
 function informationIcon() {
     let infoClick = document.querySelector(".navigation-link")
+    let button = document.querySelector(".button")
     infoClick.addEventListener("click", function () {
         gameControls.style.display = "flex"
         gameContainer.style.display = "none"
+        difficulty.style.display = "none"
+        button.style.display = "none"
     })
 }
