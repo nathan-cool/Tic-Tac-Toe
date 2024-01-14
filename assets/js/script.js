@@ -219,8 +219,10 @@ function computersTurnHard() {
 
 // Function to check if there is a winner
 function checkWinner() {
-    let winningMessageLetter = document.querySelector("#winningMessageLetter")
-    let winningMessage = document.querySelector("#winningMessage")
+    let winningMessageLetter = document.querySelector("#winningMessageLetter");
+    let winningMessage = document.querySelector("#winningMessage");
+    let tieChecker = 0;
+
     for (let combo of winningCombinations) {
         if (combo.every(index => gameState[index] === "X")) {
             winningMessageLetter.innerText = "X";
@@ -233,25 +235,21 @@ function checkWinner() {
             turnLetter.style.display = "none";
             return combo; // Returns the winning combination for O
         }
-        tie();
     }
-}
 
-// Function to check if there is a tie
-function tie() {
-    let tieChecker = 0
+    // Check for a tie
     for (let i = 0; i < gameState.length; i++) {
         if (gameState[i] != null) {
-            tieChecker++
+            tieChecker++;
         }
     }
-    if (tieChecker == numberOfSquares && winner == false) {
+
+    if (tieChecker === numberOfSquares) {
         winningMessageLetter.innerText = "Tie!";
         winningMessage.style.display = "flex";
         winningMessage.style.innerText = "";
         turnLetter.style.display = "none";
         wins.innerText = "";
-
     }
 }
 
