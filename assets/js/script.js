@@ -40,7 +40,11 @@ restart(); // Calls function to handle game restart
 whosTurn(); // Calls function to display who's turn it is
 informationIcon();
 difficultyToStart();
-// Function to choose between multiplayer or single player
+
+/**
+* Function to choose between multiplayer or single player
+* It attaches click event listeners to the Multiplayer and Single buttons. 
+*/
 function multiplayerOrSingle() {
     // Event listener for multiplayer button
     let multiplayer = document.querySelector("#multiplayerbutton");
@@ -65,7 +69,11 @@ function multiplayerOrSingle() {
         });
     }
 }
-
+/**
+ * Sets up the game difficulty based on the user's selection and starts the game.
+ * It attaches click event listeners to the difficulty buttons.
+ * When a button is clicked, the correct difficulty level is selected and starts the game.
+ */
 function difficultyToStart() {
     let easyButton = document.querySelector("#easyButton")
     let normalButton = document.querySelector("#normalButton")
@@ -97,7 +105,9 @@ function difficultyToStart() {
 
 }
 
-// Function to start the game
+/** 
+*Function to start the game by calling the game function 
+*Hides Difficulty, GameControls blocks*/
 function startGame() {
     difficulty.style.display = 'none'
     gameControls.style.display = 'none'
@@ -107,22 +117,28 @@ function startGame() {
     game(); // Calls the function to handle the game logic
 }
 
-// Function to handle the game logic
+/**
+ * Manages the game logic. 
+ * It iterates through each cell of the game board adding click event listeners to them. 
+ * When a cell is clicked the function checks the game state and player's turn updates the UI
+ * and determines if there's a winner. It also manages cooldowns between turns
+ * in single-player mode triggers the AI based on the selected difficulty level.
+ * Returns if the same id not have or there is a cooldown on clicks
+ */
 function game() {
     gameBoard.forEach((cell, index) => {
-        // Adding click event listener to each cell
         cell.addEventListener("click", function (event) {
-            if (!gameStillActive || isCooldown) return; // If the game is over or the cell is not empty, return
+            if (!gameStillActive || isCooldown) return;
             turnLetter.style.opacity = "100%";
-            if (gameState[index] == null) { // Check if cell is empty
-                gameState[index] = currentPlayer; // Update gameState with current player's move
-                cell.innerText = currentPlayer; // Display current player's symbol in cell
-                let winner = checkWinner(); // Check if there's a winner after the move
+            if (gameState[index] == null) {
+                gameState[index] = currentPlayer;
+                cell.innerText = currentPlayer;
+                let winner = checkWinner();
 
                 if (winner) {
                     updateUIAfterCheck(winner);
                     event.preventDefault();
-                    jiggle(winner); // Apply jiggle effect to winning combination
+                    jiggle(winner);
                     return;
                 }
                 isCooldown = true;
@@ -132,26 +148,30 @@ function game() {
                 }, 300);
                 switchPlayer();
                 if (singlePlayerSelected && easySelected) {
-                    setTimeout(computersTurnEasy, 300); // Calls computer's turn after a dela
+                    setTimeout(computersTurnEasy, 300);
                 } else if (singlePlayerSelected && normalSelected) {
-                    setTimeout(computersTurnNormal, 300); // Calls computer's turn after a delay
+                    setTimeout(computersTurnNormal, 300);
                 } else if (singlePlayerSelected && hardSelected) {
-                    setTimeout(computersTurnHard, 300); // Calls computer's turn after a delay
+                    setTimeout(computersTurnHard, 300);
                 }
             }
         });
     });
 }
-
-function computersTurnEasy() { // Function to handle the computer's turn
+/**
+ * Function for computer's turn in easy mode single-player game. Selects a random empty cell for the computer's move
+ * updates the game state and board, and checks for a winner. If there is a winner it triggers end-game.
+ * Otherwise, it passes the turn to the human player and continues the game.
+ */
+function computersTurnEasy() { 
     if (singlePlayerSelected == true) {
         let available = [];
         for (let i = 0; i < gameState.length; i++)
             if (gameState[i] === null) {
-                available.push(i); // Finds all available cells
+                available.push(i); 
                 console.log("test")
             }
-        let random = Math.floor(Math.random() * available.length); // Selects a random cell
+        let random = Math.floor(Math.random() * available.length); 
         let computerIndex = available[random]; // Gets the index of the random cell
         gameState[computerIndex] = computerPlayer; // Sets the computer's move in gameState
         gameBoard[computerIndex].innerText = computerPlayer; // Displays computer's move
@@ -167,6 +187,10 @@ function computersTurnEasy() { // Function to handle the computer's turn
     }
 }
 
+/**
+ * Function for computer's turn in Normal mode single-player game. This function uses the minimax algorithm to determine 50% of the time
+ * Otherwise picks a random cell for the computer's move using the easy mode function.
+ */
 function computersTurnNormal() {
     let random = Math.floor(Math.random() * 10);
     if (random < 5) {
@@ -175,6 +199,9 @@ function computersTurnNormal() {
         computersTurnHard()
 }
 
+/** Function for computer's turn in Hard mode single-player game. This function uses the minimax algorithm to determine the best move.
+ * updates the game state and board, and checks for a winner. If there is a winner triggers end-game.
+ * Otherwise, it passes the turn to the human player and resumes the game. */
 function computersTurnHard() {
     let bestScore = -Infinity; // Sets the best score to -Infinity
     let bestMove; // Variable to store the best move
@@ -202,6 +229,9 @@ function computersTurnHard() {
     }
 }
 
+/** 
+ * Function to check if there's a winner. 
+ * It iterates through the winning combinations and checks if the cells in the combination */
 function checkWinner() {
     for (let combo of winningCombinations) {
         if (combo.every(index => gameState[index] === "X")) { // Checks if X wins
@@ -210,13 +240,17 @@ function checkWinner() {
             return 'O'; // O wins
         }
     }
-    
-    if (gameState.every(cell => cell !== null)) { 
+
+    if (gameState.every(cell => cell !== null)) {
         return 'tie'; // Game is a tie
     }
     return null; // Game is still ongoing
 }
 
+/** 
+ * Function to update the UI after checking for a winner.
+ *  It displays the winning message or if game was a tie  
+ */
 function updateUIAfterCheck(result) {
     let winningMessageLetter = document.querySelector("#winningMessageLetter");
     let winningMessage = document.querySelector("#winningMessage");
@@ -228,13 +262,16 @@ function updateUIAfterCheck(result) {
         turnLetter.style.display = "none";
         jiggle(result); // Function to highlight the winning combination
     } else if (result === 'tie') {
-        // Display a tie message
-        winningMessageLetter.innerText = "Tie!";
+        winningMessageLetter.innerText = "Tie!";// Display a tie message
         winningMessage.style.display = "flex";
         turnLetter.style.display = "none";
     }
 }
 
+/** 
+ * Function to highlight the winning combination and jiggle them
+ * Finds winner by looking at the winning combination 
+ */
 function jiggle(winner) {
     let winningCombination = winningCombinations.find(combo =>  // Finds the winning combination
         combo.every(index => gameState[index] === winner) // Checks if the winning combination is the same as the winner
@@ -246,45 +283,53 @@ function jiggle(winner) {
     }
 }
 
+/** 
+ * Minimax algorithm to determine the best move for the computer player 
+ * It recursively simulates all possible moves in the game to determine the best move. 
+ */
 function minimax(board, depth, isMaximizing) { // Minimax algorithm
-    let result = checkWinner(); 
-    let scores = {
+    let result = checkWinner(); // Checks if there's a winner
+    let scores = { // Scores for each outcome
         'X': -10,
         'O': 10,
         'tie': 0
     };
 
-    if (result !== null) {
-        return scores[result];
+    if (result !== null) { // If there's a winner
+        return scores[result]; // Return the score
     }
 
-    if (isMaximizing) {
-        let bestScore = -Infinity;
+    if (isMaximizing) { // If it's the maximizing player's turn
+        let bestScore = -Infinity; // Sets the best score to -Infinity
         for (let i = 0; i < board.length; i++) {
-            if (board[i] === null) {
-                board[i] = computerPlayer;
-                let score = minimax(board, depth + 1, false);
-                board[i] = null;
-                bestScore = Math.max(score, bestScore);
+            if (board[i] === null) { // Checks if cell is empty
+                board[i] = computerPlayer; // Sets the computer's move in gameState
+                let score = minimax(board, depth + 1, false); // Calls the minimax algorithm
+                board[i] = null; // Resets the cell to empty
+                bestScore = Math.max(score, bestScore); // Updates the best score
             }
         }
         return bestScore;
     } else {
-        let bestScore = Infinity;
-        for (let i = 0; i < board.length; i++) {
+        let bestScore = Infinity; // Sets the best score to Infinity
+        for (let i = 0; i < board.length; i++) { // Loops through all cells
             if (board[i] === null) {
-                board[i] = currentPlayer;
-                let score = minimax(board, depth + 1, true);
-                board[i] = null;
-                bestScore = Math.min(score, bestScore);
+                board[i] = currentPlayer; // Sets the player's move in gameState
+                let score = minimax(board, depth + 1, true);  // Calls the minimax algorithm
+                board[i] = null; // Resets the cell to empty
+                bestScore = Math.min(score, bestScore); // Updates the best score
             }
         }
-        return bestScore;
+        return bestScore; 
     }
 }
 
+/**
+ * Resets the game to its start state when the reset button is clicked.
+ * Restarts the game state, clearing the game board, setting the current player to "X"
+ * and updating UI elements to their default states.
+ */
 function restart() {
-    // Function to handle game restart
     resetButton.addEventListener("click", function () {
         gameStillActive = true;
         gameState = [null, null, null, null, null, null, null, null, null]; // Resets the gameState
@@ -300,6 +345,11 @@ function restart() {
     wins.innerText = " wins!";
 }
 
+/**
+ * Switches the current player. In multiplayer mode, it alternates between "X" and "O".
+ * In single-player (Vs Computer) mode it switches between the human player and the computer.
+ * Also updates the turn display for the current player.
+ */
 function switchPlayer() {
     // Function to switch between players
     if (multiPlayerSelected == true) {
@@ -310,8 +360,11 @@ function switchPlayer() {
     whosTurn(); // Updates the turn display for single player
 }
 
+/**
+ * Updates the display to indicate whose turn it is in the game.
+ * It sets the display to show the current player's "X" or "O" in multiplayer mode.
+ */
 function whosTurn() {
-    // Function to update the display of who's turn it is
     if (player == currentPlayer) {
         turn.innerText = currentPlayer;
     } else if (player == computerPlayer) {
@@ -331,3 +384,4 @@ function informationIcon() {
         button.style.display = "none"
     })
 }
+
