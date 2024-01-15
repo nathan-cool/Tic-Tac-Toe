@@ -3,20 +3,18 @@ let gameBoard = document.querySelectorAll(".cell"); // Selects all the game cell
 let turnLetter = document.querySelector("#turnContainer"); // Selects the element displaying the turn
 let resetButton = document.querySelector("#reset"); // Selects the reset button
 let turn = document.querySelector("#turn"); // Selects the element showing whose turn it is
-let startButton = document.querySelector("#start"); // Selects the start game button
 let difficulty = document.querySelector("#difficulty")
 let gameState = [null, null, null, null, null, null, null, null, null]; // Initializes the game state array
 let currentPlayer = "X"; // Sets the current player to X
 let computerPlayer = "O"; // Sets the computer player to O
 let multiPlayerSelected = false; // Flag for multiplayer mode
 let singlePlayerSelected = false; // Flag for single player mode
-let winner = false; // Flag to indicate if there's a winner
 let player = currentPlayer; // Variable to track the current player
-let numberOfSquares = 9
 let gameControls = document.querySelector("#gameControls")
 let gameContainer = document.querySelector("#game-container")
 let isCooldown = false;
-let cellHover = document.querySelector(".cell")
+let winningMessageLetter = document.querySelector("#winningMessageLetter");
+let winningMessage = document.querySelector("#winningMessage");
 let winningCombinations = [
     // Defines the winning combinations on the board
     [0, 1, 2], // Top row
@@ -28,7 +26,7 @@ let winningCombinations = [
     [0, 4, 8], // Diagonal top-left to bottom-right
     [2, 4, 6] // Diagonal top-right to bottom-left
 ];
-let gameStillActive = true; // Flag to indicate if the game is still active
+let gameStillActive = false; // Flag to indicate if the game is still active
 let easySelected = false;
 let normalSelected = false;
 let hardSelected = false;
@@ -114,6 +112,7 @@ function startGame() {
     resetButton.style.display = "flex"; // Shows the reset button
     turnLetter.style.opacity = "1"; // Makes the turn display visible
     gameContainer.style.display = "flex";
+    gameStillActive = true; // Sets the game state to active
     game(); // Calls the function to handle the game logic
 }
 
@@ -240,7 +239,6 @@ function checkWinner() {
             return 'O'; // O wins
         }
     }
-
     if (gameState.every(cell => cell !== null)) {
         return 'tie'; // Game is a tie
     }
@@ -252,9 +250,6 @@ function checkWinner() {
  *  It displays the winning message or if game was a tie  
  */
 function updateUIAfterCheck(result) {
-    let winningMessageLetter = document.querySelector("#winningMessageLetter");
-    let winningMessage = document.querySelector("#winningMessage");
-
     if (result === 'X' || result === 'O') {
         // Display the winner
         winningMessageLetter.innerText = result;
@@ -278,7 +273,8 @@ function jiggle(winner) {
     );
     if (winningCombination) { // If there's a winning combination
         winningCombination.forEach(index => { // Apply jiggle effect to each cell in the winning combination
-            gameBoard[index].classList.add("jiggle") // Adds jiggle effect to the winning combination
+            gameBoard[index].classList.add("jiggle")// Adds jiggle effect to the winning combination
+            gameStillActive = false; // End the game if there's a winner
         });
     }
 }
@@ -352,6 +348,7 @@ function restart() {
  */
 function switchPlayer() {
     // Function to switch between players
+    
     if (multiPlayerSelected == true) {
         currentPlayer = currentPlayer === "X" ? "O" : "X";
     } else if (singlePlayerSelected == true) {
