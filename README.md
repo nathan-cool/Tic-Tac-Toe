@@ -26,7 +26,7 @@ This project presents a simple yet engaging Tic-Tac-Toe game, designed to provid
 ## Colour Scheme
 - A soothing colour palette with contrasting elements for visibility and aesthetics.
 
-   ![image](https://github.com/nathan-cool/Tic-Tac-Toe/assets/127421398/d569fb9e-9278-4159-b3af-6d47609800dd)
+![image](https://github.com/nathan-cool/Tic-Tac-Toe/assets/127421398/d569fb9e-9278-4159-b3af-6d47609800dd)
 
 ## Typography
 - 'Quicksand' font for its modern and readable appearance.
@@ -270,6 +270,7 @@ At the beginning of the project, a mobile-first design was implemented and adjus
 ![image](https://github.com/nathan-cool/Tic-Tac-Toe/assets/127421398/71ff24fe-8a2b-42b8-a518-8dbbea7cc6c8)
 
 ## Lighthouse testing
+<img width="493" alt="image" src="https://github.com/nathan-cool/Tic-Tac-Toe/assets/127421398/95e8b2ab-cf3a-4ee4-b0a9-5677dff286a9">
 
 
 # Credits
@@ -279,14 +280,14 @@ At the beginning of the project, a mobile-first design was implemented and adjus
 
 # Tutorial and documentation used
 
-https://www.w3schools.com/html/
-https://developer.mozilla.org/en-US/docs/
-https://css-tricks.com/
-AI
-https://www.youtube.com/watch?v=AnmwHjpEhtA
-https://www.youtube.com/watch?v=rA7tfvpkw0I
-CSS Reset from Meyerweb (http://meyerweb.com/eric/tools/css/reset/)
-Grammarly
-https://pixel-rem.com/
-https://coolors.co/
+- https://www.w3schools.com/html/
+- https://developer.mozilla.org/en-US/docs/
+- https://css-tricks.com/
+- AI
+- https://www.youtube.com/watch?v=AnmwHjpEhtA
+- https://www.youtube.com/watch?v=rA7tfvpkw0I
+- CSS Reset from Meyerweb (http://meyerweb.com/eric/tools/css/reset/)
+- Grammarly
+- https://pixel-rem.com/
+- https://coolors.co/
 
