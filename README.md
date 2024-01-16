@@ -1,4 +1,6 @@
-# Tic-Tac-Toe Game
+<h1 align="center">Tic-Tac-Toe Game </h1>
+
+[Play the game here](https://nathan-cool.github.io/Tic-Tac-Toe/))
 
 This project presents a simple yet engaging Tic-Tac-Toe game, designed to provide a fun, interactive experience for users. Aimed at users of all ages, this game offers both single and multiplayer options, adapting seamlessly across various devices.
 
@@ -19,7 +21,8 @@ This project presents a simple yet engaging Tic-Tac-Toe game, designed to provid
 ## Wireframes
 ## Colour Scheme
 - A soothing colour palette with contrasting elements for visibility and aesthetics.
-![image](https://github.com/nathan-cool/Tic-Tac-Toe/assets/127421398/44b4a9ae-b5dc-4c3a-b6a8-9d53f5143621)
+- ![image](https://github.com/nathan-cool/Tic-Tac-Toe/assets/127421398/393b33f7-2591-4680-be45-d11b1986e8dc)
+
 
 ## Typography
 - 'Quicksand' font for its modern and readable appearance.
@@ -33,9 +36,7 @@ This project presents a simple yet engaging Tic-Tac-Toe game, designed to provid
 
 # Features
 
-## 404 Page
 ## Future Features
-- Add an AI opponent using minimax 
 - Implement a score tracking system.
 
 # Technologies Used
@@ -207,6 +208,6 @@ Tutorial and documentation used:
 https://www.w3schools.com/html/
 https://developer.mozilla.org/en-US/docs/
 https://css-tricks.com/
-AI
 https://www.youtube.com/watch?v=AnmwHjpEhtA
 https://www.youtube.com/watch?v=rA7tfvpkw0I
+CS50 AI (minimax)
