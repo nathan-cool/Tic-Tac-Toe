@@ -46,9 +46,12 @@ This project presents a simple yet engaging Tic-Tac-Toe game, designed to provid
 
 ![image](https://github.com/nathan-cool/Tic-Tac-Toe/assets/127421398/52599833-92d7-429e-a6cc-56fdbcf13d09)
 
+### MiniMax
+- The MiniMax algorithm is used as the computer's AI. It helps an AI player make the best move by considering all possible future moves and their outcomes. The algorithm simulates the game several moves ahead, scoring each outcome (win, lose, or tie) 
+
 
 ### Difficulty
-- Pick How Hard the Game Is: If you play by yourself against the computer, you can choose how hard you want the game to be. There are three levels: Easy, Normal, and Hard. Easy is good for starters, while Normal and Hard are for those who want a bigger challenge.
+- Pick How Hard the Game Is: If you play by yourself against the computer, you can choose how hard you want the game to be. There are three levels: Easy, Normal, and Hard. Easy is good for starters, while Normal and Hard are for those who want a bigger challenge. For the game difficulty, the AI will choose a spot at random for the Easy level. In the Normal level, the AI may choose a spot at random or it may choose the best available spot  and this is done 50% of the time. For the Hard level, the AI will always choose the best available spot using the minimax algorithm.
 
 ![image](https://github.com/nathan-cool/Tic-Tac-Toe/assets/127421398/685ecc06-4704-47e0-b366-348b8780d7c9)
 
@@ -63,7 +66,7 @@ This project presents a simple yet engaging Tic-Tac-Toe game, designed to provid
 
 
 ### Easy Restart and Reset
-- Restart : You can easily start a new game or reset the current game anytime you want. This makes it simple to play again and again without waiting
+- Restart: You can easily start a new game or reset the current game anytime you want. This makes it simple to play again and again without waiting
 
 ![image](https://github.com/nathan-cool/Tic-Tac-Toe/assets/127421398/7c65d80a-9009-4bee-b7e9-598a2887a9da)
 
@@ -77,16 +80,14 @@ This project presents a simple yet engaging Tic-Tac-Toe game, designed to provid
 ![Jiggle-ezgif com-video-to-gif-converter](https://github.com/nathan-cool/Tic-Tac-Toe/assets/127421398/ce4d9d39-dbe7-48a4-971f-c82470590b73)
 
 
-__Turn Display__
+### Turn Display
 - Whose Turn It Is: The game always shows you whose turn it is, so you can easily follow along and plan your next move.
 
 ![image](https://github.com/nathan-cool/Tic-Tac-Toe/assets/127421398/b3e738d7-fa14-45fc-9f81-40e83c8f2b67)
 
 
-__Game Pausing__
+### Game Pausing
 - Cooldown between turns: The game has a cool-down feature, which acts like a short pause between turns. This is to stop the AI from responding too quickly.
-
-
 
 
 ## Future Features
