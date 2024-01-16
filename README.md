@@ -39,34 +39,52 @@ This project presents a simple yet engaging Tic-Tac-Toe game, designed to provid
 
 # Features
 
-### Existing Features
+## Existing Features
 
-  __Title Screen__
+### Title Screen
 - Welcome and Choose Mode: When you open the game, you see instructions on how to play Tic-Tac-Toe. You can pick to play either against the computer (AI) or with someone else who is with you.
 
-__Difficulty__
+![image](https://github.com/nathan-cool/Tic-Tac-Toe/assets/127421398/52599833-92d7-429e-a6cc-56fdbcf13d09)
+
+
+### Difficulty
 - Pick How Hard the Game Is: If you play by yourself against the computer, you can choose how hard you want the game to be. There are three levels: Easy, Normal, and Hard. Easy is good for starters, while Normal and Hard are for those who want a bigger challenge.
 
-__Playing with a Friend__
+![image](https://github.com/nathan-cool/Tic-Tac-Toe/assets/127421398/685ecc06-4704-47e0-b366-348b8780d7c9)
+
+
+###Playing with a Friend
 - Two People Can Play Together: You and a friend can play against each other in this game. It's a fun way for two people in the same place to enjoy a quick game.
 
-__Keeping Track of Your Games__
+### Keeping Track of Your Games
 - Displays messages at the end of each game to show the result - win for X or O, or a tie
 
-__Easy Restart and Reset__
+![image](https://github.com/nathan-cool/Tic-Tac-Toe/assets/127421398/55664137-de16-4fa1-bb23-9e4b4c4a20c4)
+
+
+### Easy Restart and Reset
 - Restart : You can easily start a new game or reset the current game anytime you want. This makes it simple to play again and again without waiting
 
-__Interactive Game Board__
-- Easy-to-Use Board: The game board is easy to use. You just click where you want to play. Highlight where teh user is  It works well on computers and phones.
+![image](https://github.com/nathan-cool/Tic-Tac-Toe/assets/127421398/7c65d80a-9009-4bee-b7e9-598a2887a9da)
 
-__Animated Jiggle__
+
+### Interactive Game Board
+- Easy-to-Use Board: The game board is easy to use. You just click where you want to play. Highlight where the user is  It works well on computers and phones.
+
+### Animated Jiggle
 - Winning Animations: When someone wins a game, the winning combination will jiggle.
+
+![Jiggle-ezgif com-video-to-gif-converter](https://github.com/nathan-cool/Tic-Tac-Toe/assets/127421398/ce4d9d39-dbe7-48a4-971f-c82470590b73)
+
 
 __Turn Display__
 - Whose Turn It Is: The game always shows you whose turn it is, so you can easily follow along and plan your next move.
 
+![image](https://github.com/nathan-cool/Tic-Tac-Toe/assets/127421398/b3e738d7-fa14-45fc-9f81-40e83c8f2b67)
+
+
 __Game Pausing__
-Cooldown between turns: The game has a cool-down feature, which acts like a short pause between turns. This is to stop the AI from responding too quickly.
+- Cooldown between turns: The game has a cool-down feature, which acts like a short pause between turns. This is to stop the AI from responding too quickly.
 
 
 
