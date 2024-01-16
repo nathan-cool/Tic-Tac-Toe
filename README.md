@@ -1,8 +1,10 @@
 <h1 align="center">Tic-Tac-Toe Game </h1>
 
-[Play the game here](https://nathan-cool.github.io/Tic-Tac-Toe/))
+[Play the game here](https://nathan-cool.github.io/Tic-Tac-Toe/)
 
 This project presents a simple yet engaging Tic-Tac-Toe game, designed to provide a fun, interactive experience for users. Aimed at users of all ages, this game offers both single and multiplayer options, adapting seamlessly across various devices.
+
+![mockup](https://github.com/nathan-cool/Tic-Tac-Toe/assets/127421398/2eef36d9-3eca-4765-b953-1d2e778742be)
 
 # User Story
 
@@ -11,6 +13,7 @@ This project presents a simple yet engaging Tic-Tac-Toe game, designed to provid
 - Easily navigate and understand the game's objective.
 - Choose between single or multiplayer modes.
 - Enjoy a responsive gaming experience on both desktop and mobile devices.
+- As a new user, I want the ability to customize game settings such as difficulty level
 
 ## Existing User Story 
 
@@ -35,6 +38,38 @@ This project presents a simple yet engaging Tic-Tac-Toe game, designed to provid
 ## Design choices
 
 # Features
+
+### Existing Features
+
+  __Title Screen__
+- Welcome and Choose Mode: When you open the game, you see instructions on how to play Tic-Tac-Toe. You can pick to play either against the computer (AI) or with someone else who is with you.
+
+__Difficulty__
+- Pick How Hard the Game Is: If you play by yourself against the computer, you can choose how hard you want the game to be. There are three levels: Easy, Normal, and Hard. Easy is good for starters, while Normal and Hard are for those who want a bigger challenge.
+
+__Playing with a Friend__
+- Two People Can Play Together: You and a friend can play against each other in this game. It's a fun way for two people in the same place to enjoy a quick game.
+
+__Keeping Track of Your Games__
+- Displays messages at the end of each game to show the result - win for X or O, or a tie
+
+__Easy Restart and Reset__
+- Restart : You can easily start a new game or reset the current game anytime you want. This makes it simple to play again and again without waiting
+
+__Interactive Game Board__
+- Easy-to-Use Board: The game board is easy to use. You just click where you want to play. Highlight where teh user is  It works well on computers and phones.
+
+__Animated Jiggle__
+- Winning Animations: When someone wins a game, the winning combination will jiggle.
+
+__Turn Display__
+- Whose Turn It Is: The game always shows you whose turn it is, so you can easily follow along and plan your next move.
+
+__Game Pausing__
+Cooldown between turns: The game has a cool-down feature, which acts like a short pause between turns. This is to stop the AI from responding too quickly.
+
+
+
 
 ## Future Features
 - Implement a score tracking system.
