@@ -142,7 +142,7 @@ body {
 body {
     height: 100%;
     min-height: 100vh;
- 
+
 }
 
 main {
@@ -151,8 +151,9 @@ main {
 
 h2 {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    margin-bottom: 10px;
-   color: #ffffff;
+
+    margin-bottom: 0.625rem;
+    color: #ffffff;
 }
 
 /* Header structure */
@@ -164,26 +165,26 @@ header {
 #navbar {
     display: flex;
     justify-content: space-between;
-    align-items: center; 
-    padding: 5.5px 11px;
+    align-items: center;
+    padding: 0.34375rem 0.6875rem;
 }
 
 #logo {
-    height: 30px;
+    height: 1.875rem;
     filter: grayscale(25%);
-    margin-top: 2.5px;
+    margin-top: 0.15625rem;
 }
 
 .navigation-link {
     color: #FFB000;
     text-decoration: none;
-    padding: 0 20px;
+    padding: 0 1.25rem;
 }
 
 /* Adjust the height and line-height of the nav to center items vertically */
 nav {
-    height: 30px;
-    line-height: 1px;
+    height: 1.875rem;
+    line-height: 0.0625rem;
 
 }
 
@@ -193,11 +194,11 @@ nav {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
     grid-gap: 0;
-    width: 300px;
-    height: 300px;
-    max-width: 400px;
-    max-height: 400px;
-    border: 1px solid #2c3244;
+    width: 18.75rem;
+    height: 18.75rem;
+    max-width: 25rem;
+    max-height: 25rem;
+    border: 0.0625rem solid #2c3244;
 }
 
 /* Styling for each cell in the game */
@@ -205,8 +206,8 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-right: 1px solid #2c3244;
-    border-bottom: 1px solid #2c3244;
+    border-right: 0.0625rem solid #2c3244;
+    border-bottom: 0.0625rem solid #2c3244;
     background: #3b4660;
     color: #ffffff;
     cursor: pointer;
@@ -239,8 +240,8 @@ nav {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 10px;
-    padding: 10px;
+    margin: 0.625rem;
+    padding: 0.625rem;
     flex-direction: column;
 
 }
@@ -258,16 +259,16 @@ nav {
 
 /* Button stylings */
 .button {
-    margin: 20px;
-    padding: 10px;
-    border-radius: 10px;
+    margin: 1.25rem;
+    padding: 0.625rem;
+    border-radius: 0.625rem;
     background-color: #3b4660;
     color: #FFB000;
-    border: 1px solid #FFB000;
-    font-size: 20px;
+    border: 0.0625rem solid #FFB000;
+    font-size: 1.25rem;
     cursor: pointer;
-    width: 150px;
-    max-width: 250px;
+    width: 9.375rem;
+    max-width: 15.625rem;
     transition: background-color 0.3s, color 0.3s;
     justify-content: center;
 }
@@ -279,15 +280,15 @@ nav {
 
 #gameControls {
     display: flex;
-    margin: 15px;
-    padding: 10px;
+    margin: 0.9375rem;
+    padding: 0.625rem;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    width: 300px;
-    height: 300px;
-    max-width: 400px;
-    max-height: 400px;
+    width: 18.75rem;
+    height: 18.75rem;
+    max-width: 25rem;
+    max-height: 25rem;
 }
 
 #textContainer {
@@ -305,14 +306,14 @@ nav {
 
 /* Difficulty Container */
 #difficulty {
-    border: 1px solid #2c3244;
-    padding: 10px;
+    border: 0.0625rem solid #2c3244;
+    padding: 0.625rem;
     display: none;
     justify-content: center;
-    width: 300px;
-    height: 300px;
-    max-width: 400px;
-    max-height: 400px;
+    width: 18.75rem;
+    height: 18.75rem;
+    max-width: 25rem;
+    max-height: 25rem;
 }
 
 #difficultyContainer {
@@ -322,9 +323,10 @@ nav {
     justify-content: center;
     height: 100%;
 }
+
 /* Footer */
 footer {
-    height: 40px;
+    height: 2.5rem;
     width: 100%;
     background-color: #2c3244
 }
@@ -340,19 +342,14 @@ footer {
     justify-content: center;
 }
 
-/*Footer list*/
-#footerlinks li {
-    display: flex;
-    padding-left: 4rem;
-    padding-right: 4rem;
-}
 
 /*Footer Links Links*/
 #footerlinks a {
     text-decoration: none;
     display: flex;
-    color: #000000;
+    color: #3b4660;
     font-size: 1.5rem;
+    padding-right: 2.8125rem;
 }
 
 /*Footer Link hover*/
@@ -368,13 +365,13 @@ footer {
 }
 
 /* Responsiveness */
-@media only screen and (min-width: 640px) {
+@media only screen and (min-width: 40rem) {
     #buttonContainer {
         flex-direction: row;
     }
 }
 
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 64rem) {
     .cell {
         font-size: 3rem;
     }
@@ -384,32 +381,32 @@ footer {
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
-        border: 1px solid #2c3244;
+        border: 0.0625rem solid #2c3244;
         font-size: 1em;
-        width: 400px;
-        height: 400px;
-        max-width: 500px;
-        max-height: 500px;
+        width: 25rem;
+        height: 25rem;
+        max-width: 31.25rem;
+        max-height: 31.25rem;
     }
 
     #difficulty {
         font-size: 1em;
-        width: 400px;
-        height: 400px;
-        max-width: 500px;
-        max-height: 500px;
+        width: 25rem;
+        height: 25rem;
+        max-width: 31.25rem;
+        max-height: 31.25rem;
     }
 
     #gameboard {
         font-size: 1em;
-        width: 400px;
-        height: 400px;
-        max-width: 500px;
-        max-height: 500px;
+        width: 25rem;
+        height: 25rem;
+        max-width: 31.25rem;
+        max-height: 31.25rem;
     }
 }
 
-@media only screen and (min-width: 1440px) {
+@media only screen and (min-width: 90rem) {
     .cell {
         font-size: 3.5rem;
     }
@@ -420,7 +417,7 @@ footer {
     }
 }
 
-@media only screen and (min-width: 1920px) {
+@media only screen and (min-width: 120rem) {
     .cell {
         font-size: 2rem;
     }
@@ -432,30 +429,30 @@ footer {
 
     #difficulty {
         font-size: 1.2em;
-        width: 500px;
-        height: 500px;
-        max-width: 600px;
-        max-height: 600px;
+        width: 31.25rem;
+        height: 31.25rem;
+        max-width: 37.5rem;
+        max-height: 37.5rem;
     }
 
     #gameControls {
         font-size: 1.2em;
-        width: 500px;
-        height: 500px;
-        max-width: 600px;
-        max-height: 600px;
+        width: 31.25rem;
+        height: 31.25rem;
+        max-width: 37.5rem;
+        max-height: 37.5rem;
     }
 
     #gameboard {
         font-size: 1.2em;
-        width: 500px;
-        height: 500px;
-        max-width: 600px;
-        max-height: 600px;
+        width: 31.25rem;
+        height: 31.25rem;
+        max-width: 37.5rem;
+        max-height: 37.5rem;
     }
 }
 
-/* Keyframes for jiggle animation */
+/* Keyframes for jiggle animation Code taken from code pen. */
 @keyframes jiggle {
     20% {
         transform: translateY(-13%);
@@ -483,5 +480,3 @@ footer {
 .jiggle {
     animation: jiggle 0.5s ease-in-out;
 }
-
-

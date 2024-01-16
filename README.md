@@ -45,7 +45,7 @@ This project presents a simple yet engaging Tic-Tac-Toe game, designed to provid
 
 
 ### Difficulty
-- Pick How Hard the Game Is: If you play by yourself against the computer, you can choose how hard you want the game to be. There are three levels: Easy, Normal, and Hard. Easy is good for starters, while Normal and Hard are for those who want a bigger challenge. For the game difficulty, the AI will choose a spot at random for the Easy level. In the Normal level, the AI may choose a spot at random or it may choose the best available spot  and this is done 50% of the time. For the Hard level, the AI will always choose the best available spot using the minimax algorithm.
+- Pick How Hard the Game Is: If you play by yourself against the computer, you can choose how hard you want the game to be. There are three levels: Easy, Normal, and Hard. Easy is good for starters, while Normal and Hard are for those who want a bigger challenge. For the game difficulty, the AI will choose a spot at random for the Easy level. In the Normal level, the AI may choose a spot at random or it may choose the best available spot and this is done 50% of the time. For the Hard level, the AI will always choose the best available spot using the minimax algorithm.
 
 ![image](https://github.com/nathan-cool/Tic-Tac-Toe/assets/127421398/685ecc06-4704-47e0-b366-348b8780d7c9)
 
@@ -279,12 +279,12 @@ At the beginning of the project, a mobile-first design was implemented and adjus
 
 # Tutorial and documentation used
 
-- https://www.w3schools.com/html/
-- https://developer.mozilla.org/en-US/docs/
-- https://css-tricks.com/
-- https://www.youtube.com/watch?v=AnmwHjpEhtA
-- https://www.youtube.com/watch?v=rA7tfvpkw0I
-- https://www.youtube.com/watch?v=SLgZhpDsrfc
-- CS50 AI (minimax)
-- AI (Used mainly to explain concepts for minimax)
-- Grammarly (Used to create grammar of text including game instructions) 
+https://www.w3schools.com/html/
+https://developer.mozilla.org/en-US/docs/
+https://css-tricks.com/
+AI
+https://www.youtube.com/watch?v=AnmwHjpEhtA
+https://www.youtube.com/watch?v=rA7tfvpkw0I
+CSS Reset from Meyerweb (http://meyerweb.com/eric/tools/css/reset/)
+Grammarly
+
