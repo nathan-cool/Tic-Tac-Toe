@@ -93,6 +93,25 @@ This project presents a simple yet engaging Tic-Tac-Toe game, designed to provid
 ## Future Features
 - Implement a score tracking system.
 
+# Fixed Bugs
+
+## Minimax Algorithm Integration
+- Winner Determination Error: Initially, the implementation of the minimax algorithm interfered with the correct determination of the winner, causing inaccurate end games.
+- Tie Scenarios: The game failed to recognise tie scenarios correctly when the minimax algorithm was first integrated, leading to continued gameplay despite no available moves.
+
+## Game Logic and Flow
+- Player Turn Switching: There was an issue in switching turns between the human player and the AI, particularly noticeable in the single-player mode.
+
+## UI
+- Winner Announcement Delay: A bug caused a delay in announcing the winner, leading to a brief period where players were unsure of the game's outcome.
+- Responsive Design Flaws: The game had issues with responsiveness and scaling, affecting the gameplay experience on various devices.
+
+## Debugging and Testing
+- Extensive use of browser developer tools helped identify and resolve many of these issues.
+- Rigorous testing across different platforms ensured a consistent and enjoyable user experience.
+
+
+
 # Technologies Used
 ## Languages
 - HTML5
@@ -233,11 +252,8 @@ At the beginning of the project, a mobile-first design was implemented and adjus
 </table>
 
 
-## Code Validation
-- HTML, CSS, and JavaScript validated for syntax and efficiency.
-
 ## User Feedback
-- User testing conducted to refine gameplay and UI/UX.
+- User testing was conducted to refine gameplay and UI/UX.
 
 # Deployment
 Steps for deploying the project on GitHub Pages:
@@ -245,10 +261,18 @@ Steps for deploying the project on GitHub Pages:
 2. Navigate to "Settings" and locate the "GitHub Pages" section.
 3. Select the main branch as the source and save the changes.
 
+# Code Validation
+
 ## HTML-W3C-Validator 
+![image](https://github.com/nathan-cool/Tic-Tac-Toe/assets/127421398/c5fc2deb-80ed-414c-8dad-803ac21f2031)
 
 ## CSS-Validator  
+
+![image](https://github.com/nathan-cool/Tic-Tac-Toe/assets/127421398/71ff24fe-8a2b-42b8-a518-8dbbea7cc6c8)
+
 ## Lighthouse testing
+
+
 ## Fixed Bugs
 ## Implementation
 
