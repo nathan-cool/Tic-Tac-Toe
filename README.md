@@ -287,4 +287,6 @@ https://www.youtube.com/watch?v=AnmwHjpEhtA
 https://www.youtube.com/watch?v=rA7tfvpkw0I
 CSS Reset from Meyerweb (http://meyerweb.com/eric/tools/css/reset/)
 Grammarly
+https://pixel-rem.com/
+https://coolors.co/
 
