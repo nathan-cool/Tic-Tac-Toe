@@ -22,20 +22,14 @@ This project presents a simple yet engaging Tic-Tac-Toe game, designed to provid
 
 # Design
 ## Wireframes
+
 ## Colour Scheme
 - A soothing colour palette with contrasting elements for visibility and aesthetics.
-- ![image](https://github.com/nathan-cool/Tic-Tac-Toe/assets/127421398/393b33f7-2591-4680-be45-d11b1986e8dc)
 
+   ![image](https://github.com/nathan-cool/Tic-Tac-Toe/assets/127421398/d569fb9e-9278-4159-b3af-6d47609800dd)
 
 ## Typography
 - 'Quicksand' font for its modern and readable appearance.
-
-## Effects
-- Interactive elements like cells and buttons with hover effects for better user engagement.
-  ![image](https://github.com/nathan-cool/Tic-Tac-Toe/assets/127421398/86450571-5917-4368-aa91-f0f4eb350d53)
-  ![image](https://github.com/nathan-cool/Tic-Tac-Toe/assets/127421398/6b010992-a13b-402c-a261-46e723be611f)
-
-## Design choices
 
 # Features
 
@@ -56,7 +50,7 @@ This project presents a simple yet engaging Tic-Tac-Toe game, designed to provid
 ![image](https://github.com/nathan-cool/Tic-Tac-Toe/assets/127421398/685ecc06-4704-47e0-b366-348b8780d7c9)
 
 
-###Playing with a Friend
+### Playing with a Friend
 - Two People Can Play Together: You and a friend can play against each other in this game. It's a fun way for two people in the same place to enjoy a quick game.
 
 ### Keeping Track of Your Games
@@ -89,12 +83,19 @@ This project presents a simple yet engaging Tic-Tac-Toe game, designed to provid
 ### Game Pausing
 - Cooldown between turns: The game has a cool-down feature, which acts like a short pause between turns. This is to stop the AI from responding too quickly.
 
+### Effects
+- Interactive elements like cells and buttons with hover effects for better user engagement.
+
+![image](https://github.com/nathan-cool/Tic-Tac-Toe/assets/127421398/86450571-5917-4368-aa91-f0f4eb350d53)
+
+![image](https://github.com/nathan-cool/Tic-Tac-Toe/assets/127421398/6b010992-a13b-402c-a261-46e723be611f)
 
 ## Future Features
 - Implement a score tracking system.
+- Add sound effects
+- Add information button, when pressed the game rules are presented
 
 # Fixed Bugs
-
 ## Minimax Algorithm Integration
 - Winner Determination Error: Initially, the implementation of the minimax algorithm interfered with the correct determination of the winner, causing inaccurate end games.
 - Tie Scenarios: The game failed to recognise tie scenarios correctly when the minimax algorithm was first integrated, leading to continued gameplay despite no available moves.
@@ -110,8 +111,6 @@ This project presents a simple yet engaging Tic-Tac-Toe game, designed to provid
 - Extensive use of browser developer tools helped identify and resolve many of these issues.
 - Rigorous testing across different platforms ensured a consistent and enjoyable user experience.
 
-
-
 # Technologies Used
 ## Languages
 - HTML5
@@ -119,15 +118,13 @@ This project presents a simple yet engaging Tic-Tac-Toe game, designed to provid
 - ES6+ JavaScript
 - Google Chrome Dev tools
 - Google Lighthouse for audits
-- vs code
-
+- VS code
 
 ## Tools and Libraries
 - Visual Studio Code, GitHub for development and version control.
 - Google Fonts for typography.
 
 # Testing
-## Device Testing
 
 ## Device Testing
 At the beginning of the project, a mobile-first design was implemented and adjustments were made to ensure it looked good on all screen sizes. The following devices were tested:
@@ -254,9 +251,11 @@ At the beginning of the project, a mobile-first design was implemented and adjus
 
 ## User Feedback
 - User testing was conducted to refine gameplay and UI/UX.
+- User testing used to find bugs etc
 
 # Deployment
-Steps for deploying the project on GitHub Pages:
+
+- Steps for deploying the project on GitHub Pages:
 1. Access the repository on GitHub.
 2. Navigate to "Settings" and locate the "GitHub Pages" section.
 3. Select the main branch as the source and save the changes.
@@ -273,19 +272,19 @@ Steps for deploying the project on GitHub Pages:
 ## Lighthouse testing
 
 
-## Fixed Bugs
-## Implementation
-
 # Credits
-I would like to express my gratitude to the Slack Community for their invaluable assistance. Stephen Seagrave for helping me throughout my coding. My mentor Brian Macharia.
+- I would like to express my gratitude to the Slack Community for their invaluable assistance. Stephen Seagrave for helping me throughout my coding. My mentor Brian Macharia.
 
 # Contents
 
-Tutorial and documentation used:
+# Tutorial and documentation used
 
-https://www.w3schools.com/html/
-https://developer.mozilla.org/en-US/docs/
-https://css-tricks.com/
-https://www.youtube.com/watch?v=AnmwHjpEhtA
-https://www.youtube.com/watch?v=rA7tfvpkw0I
-CS50 AI (minimax)
+- https://www.w3schools.com/html/
+- https://developer.mozilla.org/en-US/docs/
+- https://css-tricks.com/
+- https://www.youtube.com/watch?v=AnmwHjpEhtA
+- https://www.youtube.com/watch?v=rA7tfvpkw0I
+- https://www.youtube.com/watch?v=SLgZhpDsrfc
+- CS50 AI (minimax)
+- AI (Used mainly to explain concepts for minimax)
+- Grammarly (Used to create grammar of text including game instructions) 
